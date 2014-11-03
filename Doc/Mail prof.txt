@@ -1,0 +1,29 @@
+Bonjour,
+
+Comme Mme Kervella vous l'a annoncé lors du 1er amphi, vous devez réaliser un projet lié aux matières base de données et programmation Web, avec un certain nombre de rendus pour la partie BD.
+
+Voici la liste des documents me rendre :
+
+1) un rappel du sujet (titre, explications en 2 lignes)
+2) les hypothèses prises si elles sont différentes de la vie courante afin de bien déterminer le cadre du projet
+3) Le dictionnaire des données contenant pour chaque champ:
+     - son nom
+     - une description très précise avec exemples surtout pour des champs comme Catégorie, Genre ... Vous devez  vous mettre à ma place
+     - sa nature
+     - son type
+     - sa taille
+     - la règle de calcul  et les contraintes éventuelles
+ Un exemple de dictionnaire des données est disponible dans le public_prof de Mme Kervella sur Titan.
+4) La couverture minimale sous forme de graphe de dépendances fonctionnelles
+5) le schéma entité association
+6) le schéma relationnel
+
+Merci de m'envoyer au plus tard:
+- Mardi 21 octobre fin de journée : les points 1, 2 et 3 (sujet, hypothèses, dictionnaire des données)
+- Vendredi 24 octobre fin de journée les points 4, 5 et 6 (graphe de DF, Schéma EA, Schéma relationnel)
+
+Je vous rappelle mon adresse mail :  sandrine.lelievre@u-picardie.fr
+
+Bon courage,
+
+S. Lelièvre
