@@ -1,0 +1,4 @@
+tabulous_main:
+    resource: "@TabulousMainBundle/Resources/config/routing.yml"
+    prefix:   /
+
