@@ -16,7 +16,11 @@ class AppKernel extends Kernel
             new Symfony\Bundle\AsseticBundle\AsseticBundle(),
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
-            new Tabulous\MainBundle\TabulousMainBundle(),
+            new Tabulous\SiteBundle\SiteBundle(),
+            new Tabulous\TablatureBundle\TablatureBundle(),
+            new Tabulous\UserBundle\UserBundle(),
+            new Tabulous\AdminBundle\AdminBundle(),
+            new Tabulous\ForumBundle\ForumBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

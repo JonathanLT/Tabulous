@@ -1,4 +1,20 @@
-tabulous_main:
-    resource: "@TabulousMainBundle/Resources/config/routing.yml"
+forum:
+    resource: "@ForumBundle/Resources/config/routing.yml"
+    prefix:   /
+
+admin:
+    resource: "@AdminBundle/Resources/config/routing.yml"
+    prefix:   /
+
+user:
+    resource: "@UserBundle/Resources/config/routing.yml"
+    prefix:   /
+
+tablature:
+    resource: "@TablatureBundle/Resources/config/routing.yml"
+    prefix:   /
+
+site:
+    resource: "@SiteBundle/Resources/config/routing.yml"
     prefix:   /
 

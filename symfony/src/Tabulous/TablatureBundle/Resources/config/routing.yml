@@ -1,0 +1,3 @@
+tablature_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: TablatureBundle:Default:index }
