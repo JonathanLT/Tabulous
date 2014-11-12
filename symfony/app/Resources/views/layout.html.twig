@@ -1,0 +1,87 @@
+{# app/Resources/views/layout.html.twig #}
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>{% block title %}Tabulous{% endblock %}</title>
+
+  {% block stylesheets %}
+    {# On charge le CSS de bootstrap depuis le site directement #}
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+  {% endblock %}
+</head>
+
+<body>
+  <div class="container">
+    <div id="header" class="jumbotron">
+      <h1>TABULOUS <small>We are Fabulous!</small></h1>
+      <p><pre>
+
+      </pre>
+      </p>
+      <p>
+      <div class="row">
+  <div class="col-md-8">
+        <a class="btn btn-primary btn-lg" href="http://localhost/Symfony/web/app_dev.php/login">
+        <span class="glyphicon glyphicon-home"></span>
+          Home »
+        </a>
+        <a class="btn btn-primary btn-lg" href="http://localhost/Symfony/web/app_dev.php/login">
+         <span class="glyphicon glyphicon-music"></span> Tablatures »
+        </a>
+        <a class="btn btn-primary btn-lg" href="http://localhost/Symfony/web/app_dev.php/login">
+          <span class="glyphicon glyphicon-stats"></span>
+          Statistics »
+        </a>
+        <a class="btn btn-primary btn-lg" href="http://localhost/Symfony/web/app_dev.php/login">
+          <span class="glyphicon glyphicon-pencil"></span>
+          Forum »
+        </a>
+  </div>
+  <div class="col-md-3 col-md-offset-1">
+        <a class="btn btn-primary btn-lg" href="http://localhost/Symfony/web/app_dev.php/login">
+          Log-in »
+        </a>
+        <a class="btn btn-primary btn-lg" href="http://localhost/Symfony/web/app_dev.php/login">
+          Register »
+        </a>
+        </div>
+        </div>
+      </p>
+    </div>
+
+    <div class="row">
+      <div id="menu" class="col-md-3">
+        <h3>Menu</h3>
+        <ul class="nav nav-pills nav-stacked">
+          <li><a href="{{ path('tablature_projet_home') }}">Accueil</a></li>
+          <li><a href="">Ajouter une tablature</a></li>
+        </ul>
+
+        <h4>Dernières tablatures consultées</h4>
+        {{ render(controller("SiteBundle:Site:menu", {'limit': 3})) }}
+      </div>
+      <div id="content" class="col-md-9">
+        {% block body %}
+        {% endblock %}
+      </div>
+    </div>
+
+    <hr>
+
+    <footer>
+      <p>Tabulous Papam © {{ 'now'|date('Y') }} </p>
+    </footer>
+  </div>
+
+  {% block javascripts %}
+    {# Ajoutez ces lignes JavaScript si vous comptez vous servir des fonctionnalités du bootstrap Twitter #}
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+  {% endblock %}
+
+</body>
+</html>

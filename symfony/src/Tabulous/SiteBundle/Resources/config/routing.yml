@@ -1,3 +1,13 @@
-site_homepage:
-    path:     /hello/{name}
-    defaults: { _controller: SiteBundle:Default:index }
+# src/OC/PlatformBundle/Resources/config/routing.yml
+
+tablature_projet_home:
+    path:      /{page}
+    defaults:  { _controller: SiteBundle:Site:index, page: 1 }
+    requirements:
+        page: \d*
+
+tablature_projet_view:
+    path:      /tablature/{id}
+    defaults:  { _controller: SiteBundle:Site:view }
+    requirements:
+        id: \d+

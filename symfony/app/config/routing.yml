@@ -1,20 +1,20 @@
 forum:
     resource: "@ForumBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /Tabulous
 
 admin:
     resource: "@AdminBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /Tabulous
 
 user:
     resource: "@UserBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /Tabulous
 
 tablature:
     resource: "@TablatureBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /Tabulous
 
 site:
     resource: "@SiteBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /Tabulous
 
