@@ -8,20 +8,6 @@
 
 {% block tabulous_body %}
 
-  <h2>Liste des tablatures</h2>
-
-  <ul>
-    {% for tablature in listTablature %}
-      <li>
-        <a href="{{ path('tablature_projet_view', {'id': tablature.id}) }}">
-          {{ tablature.title }}
-        </a>
-        par {{ tablature.author }},
-        le {{ tablature.date|date('d/m/Y') }}
-      </li>
-    {% else %}
-      <li>Pas (encore !) de tablatures</li>
-    {% endfor %}
-  </ul>
+  
 
 {% endblock %}

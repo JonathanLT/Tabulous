@@ -9,12 +9,17 @@ use Symfony\Component\HttpFoundation\Response;
 
 class SiteController extends Controller
 {
-    public function indexAction($page)
-    {
+public function indexAction($page)
+  {
     if ($page < 1) {
 	throw new NotFoundHttpException('Page "'.$page.'" inexistante.');
     }
-      $listTablature = array(
+  return $this->render('SiteBundle:Site:index.html.twig');
+  }
+
+public function tablaturesAction()
+  {
+    $listTablature = array(
       array(
         'title'   => 'Rammstein - Rosenrot',
         'id'      => 1,
@@ -38,7 +43,8 @@ class SiteController extends Controller
     return $this->render('SiteBundle:Site:index.html.twig', array(
       'listTablature' => $listTablature
     ));
-  }
+
+  } 
 
 public function menuAction($limit)
   {

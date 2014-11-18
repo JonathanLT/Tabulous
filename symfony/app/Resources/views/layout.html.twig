@@ -25,7 +25,7 @@
       <p>
       <div class="row">
   <div class="col-md-8">
-        <a class="btn btn-primary btn-lg" href="http://localhost/Symfony/web/app_dev.php/login">
+        <a class="btn btn-primary btn-lg" href="{{ path('tablature_projet_home') }}">
         <span class="glyphicon glyphicon-home"></span>
           Home »
         </a>
@@ -55,11 +55,8 @@
 
     <div class="row">
       <div id="menu" class="col-md-3">
-        <h3>Menu</h3>
-        <ul class="nav nav-pills nav-stacked">
-          <li><a href="{{ path('tablature_projet_home') }}">Accueil</a></li>
-          <li><a href="">Ajouter une tablature</a></li>
-        </ul>
+        <h4>Dernières tablatures ajoutées</h4>
+        {{ render(controller("SiteBundle:Site:menu", {'limit': 3})) }}
 
         <h4>Dernières tablatures consultées</h4>
         {{ render(controller("SiteBundle:Site:menu", {'limit': 3})) }}

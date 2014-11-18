@@ -6,6 +6,10 @@ tablature_projet_home:
     requirements:
         page: \d*
 
+tablature_projet_tablatures:
+    path:      /tablatures
+    defaults: { _controller: SiteBundle:Site:tablatures }
+
 tablature_projet_view:
     path:      /tablature/{id}
     defaults:  { _controller: SiteBundle:Site:view }
