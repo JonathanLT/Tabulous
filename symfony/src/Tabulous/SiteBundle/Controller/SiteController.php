@@ -40,7 +40,7 @@ public function tablaturesAction()
         'date'    => new \Datetime())
     );
 
-    return $this->render('SiteBundle:Site:index.html.twig', array(
+    return $this->render('TablatureBundle::tablatures.html.twig', array(
       'listTablature' => $listTablature
     ));
 
