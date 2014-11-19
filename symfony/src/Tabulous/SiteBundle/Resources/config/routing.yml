@@ -15,3 +15,15 @@ tablature_projet_view:
     defaults:  { _controller: SiteBundle:Site:view }
     requirements:
         id: \d+
+
+tablature_projet_log:
+    path:      /user
+    defaults:  { _controller: SiteBundle:Site:user }
+    requirements:
+        id: \d+
+
+tablature_projet_register:
+    path:      /register
+    defaults:  { _controller: SiteBundle:Site:register }
+    requirements:
+        id: \d+
