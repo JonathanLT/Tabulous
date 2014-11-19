@@ -1,0 +1,135 @@
+<?php
+
+namespace Tabulous\AdminBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Tablature
+ *
+ * @ORM\Table(name="tablature", indexes={@ORM\Index(name="idGenre", columns={"idGenre"}), @ORM\Index(name="idInstrument", columns={"idInstrument"}), @ORM\Index(name="idMembre", columns={"idMembre"}), @ORM\Index(name="idArtiste", columns={"idArtiste"})})
+ * @ORM\Entity
+ */
+class Tablature
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nomMusique", type="string", length=255, nullable=false)
+     */
+    private $nommusique;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="album", type="string", length=100, nullable=false)
+     */
+    private $album;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="accordage", type="string", length=3, nullable=false)
+     */
+    private $accordage;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date", type="date", nullable=false)
+     */
+    private $date;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="moyenne", type="float", precision=10, scale=0, nullable=false)
+     */
+    private $moyenne;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="format", type="string", length=3, nullable=false)
+     */
+    private $format;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="niveau", type="integer", nullable=false)
+     */
+    private $niveau;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="adresseFichier", type="string", length=255, nullable=false)
+     */
+    private $adressefichier;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="cumulNote", type="integer", nullable=true)
+     */
+    private $cumulnote;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="nbNote", type="integer", nullable=true)
+     */
+    private $nbnote;
+
+    /**
+     * @var \Artiste
+     *
+     * @ORM\ManyToOne(targetEntity="Artiste")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="idArtiste", referencedColumnName="id")
+     * })
+     */
+    private $idartiste;
+
+    /**
+     * @var \Genre
+     *
+     * @ORM\ManyToOne(targetEntity="Genre")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="idGenre", referencedColumnName="id")
+     * })
+     */
+    private $idgenre;
+
+    /**
+     * @var \Instrument
+     *
+     * @ORM\ManyToOne(targetEntity="Instrument")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="idInstrument", referencedColumnName="id")
+     * })
+     */
+    private $idinstrument;
+
+    /**
+     * @var \Membre
+     *
+     * @ORM\ManyToOne(targetEntity="Membre")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="idMembre", referencedColumnName="id")
+     * })
+     */
+    private $idmembre;
+
+
+}

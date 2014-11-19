@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Tablature" table="tablature">
+    <indexes>
+      <index name="idGenre" columns="idGenre"/>
+      <index name="idInstrument" columns="idInstrument"/>
+      <index name="idMembre" columns="idMembre"/>
+      <index name="idArtiste" columns="idArtiste"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="nommusique" type="string" column="nomMusique" length="255" nullable="false"/>
+    <field name="album" type="string" column="album" length="100" nullable="false"/>
+    <field name="accordage" type="string" column="accordage" length="3" nullable="false"/>
+    <field name="date" type="date" column="date" nullable="false"/>
+    <field name="moyenne" type="float" column="moyenne" precision="10" scale="0" nullable="false"/>
+    <field name="format" type="string" column="format" length="3" nullable="false"/>
+    <field name="niveau" type="integer" column="niveau" nullable="false"/>
+    <field name="adressefichier" type="string" column="adresseFichier" length="255" nullable="false"/>
+    <field name="cumulnote" type="integer" column="cumulNote" nullable="true"/>
+    <field name="nbnote" type="integer" column="nbNote" nullable="true"/>
+    <many-to-one field="idmembre" target-entity="Membre">
+      <join-columns>
+        <join-column name="idMembre" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idinstrument" target-entity="Instrument">
+      <join-columns>
+        <join-column name="idInstrument" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idgenre" target-entity="Genre">
+      <join-columns>
+        <join-column name="idGenre" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idartiste" target-entity="Artiste">
+      <join-columns>
+        <join-column name="idArtiste" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

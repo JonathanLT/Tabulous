@@ -1,0 +1,59 @@
+<?php
+
+namespace Tabulous\SiteBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Commentaire
+ *
+ * @ORM\Table(name="commentaire", indexes={@ORM\Index(name="idMembre", columns={"idMembre"}), @ORM\Index(name="idTablature", columns={"idTablature"})})
+ * @ORM\Entity
+ */
+class Commentaire
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date", type="date", nullable=false)
+     */
+    private $date;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="contenu", type="string", length=255, nullable=false)
+     */
+    private $contenu;
+
+    /**
+     * @var \Membre
+     *
+     * @ORM\ManyToOne(targetEntity="Membre")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="idMembre", referencedColumnName="id")
+     * })
+     */
+    private $idmembre;
+
+    /**
+     * @var \Tablature
+     *
+     * @ORM\ManyToOne(targetEntity="Tablature")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="idTablature", referencedColumnName="id")
+     * })
+     */
+    private $idtablature;
+
+
+}
