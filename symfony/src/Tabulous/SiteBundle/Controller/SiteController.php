@@ -17,35 +17,6 @@ public function indexAction($page)
   return $this->render('SiteBundle:Site:index.html.twig');
   }
 
-public function tablaturesAction()
-  {
-    $listTablature = array(
-      array(
-        'title'   => 'Rammstein - Rosenrot',
-        'id'      => 1,
-        'author'  => 'Alexandre',
-        'content' => 'Tablature basse',
-        'date'    => new \Datetime()),
-      array(
-        'title'   => 'System of a Down - Pictures',
-        'id'      => 2,
-        'author'  => 'Hugo',
-        'content' => 'Solo guitare',
-        'date'    => new \Datetime()),
-      array(
-        'title'   => 'Billy Talent - Fallen Leaves',
-        'id'      => 3,
-        'author'  => 'Mathieu',
-        'content' => 'Rythmique + paroles',
-        'date'    => new \Datetime())
-    );
-
-    return $this->render('TablatureBundle::tablatures.html.twig', array(
-      'listTablature' => $listTablature
-    ));
-
-  } 
-
 public function menuAction($limit)
   {
     // On fixe en dur une liste ici, bien entendu par la suite
@@ -63,18 +34,4 @@ public function menuAction($limit)
     ));
   }
 
-  public function viewAction($id)
-    {
-      $tablature = array(
-        'title'   => 'Rammstein - Rosenrot',
-        'id'      => $id,
-        'author'  => 'Alexandre',
-        'content' => 'Tablature basse',
-        'date'    => new \Datetime()
-      );
-
-      return $this->render('SiteBundle:Site:view.html.twig', array(
-        'tablature' => $tablature
-      ));
-    }
 }

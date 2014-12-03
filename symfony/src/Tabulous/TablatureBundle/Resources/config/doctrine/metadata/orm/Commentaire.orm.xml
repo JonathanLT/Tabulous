@@ -10,14 +10,14 @@
     </id>
     <field name="date" type="date" column="date" nullable="false"/>
     <field name="contenu" type="string" column="contenu" length="255" nullable="false"/>
-    <many-to-one field="idtablature" target-entity="Tablature">
-      <join-columns>
-        <join-column name="idTablature" referenced-column-name="id"/>
-      </join-columns>
-    </many-to-one>
     <many-to-one field="idmembre" target-entity="Membre">
       <join-columns>
         <join-column name="idMembre" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idtablature" target-entity="Tablature">
+      <join-columns>
+        <join-column name="idTablature" referenced-column-name="id"/>
       </join-columns>
     </many-to-one>
   </entity>

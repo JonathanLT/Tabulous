@@ -78,14 +78,18 @@ class Membre
     private $pseudo;
 
     /**
-     * @var \Genre
+     * @var \DateTime
      *
-     * @ORM\ManyToOne(targetEntity="Genre")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="idGenre", referencedColumnName="id")
-     * })
+     * @ORM\Column(name="dateEnregistrement", type="datetime", nullable=false)
      */
-    private $idgenre;
+    private $dateenregistrement;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="administrateur", type="integer", nullable=false)
+     */
+    private $administrateur;
 
     /**
      * @var \Instrument
@@ -96,6 +100,16 @@ class Membre
      * })
      */
     private $idinstrument;
+
+    /**
+     * @var \Genre
+     *
+     * @ORM\ManyToOne(targetEntity="Genre")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="idGenre", referencedColumnName="id")
+     * })
+     */
+    private $idgenre;
 
 
 }

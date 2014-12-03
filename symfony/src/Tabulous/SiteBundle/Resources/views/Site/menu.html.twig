@@ -6,7 +6,7 @@
 <ul class="nav nav-pills nav-stacked">
   {% for tablature in listTablature %}
     <li>
-      <a href="{{ path('tablature_projet_view', {'id': tablature.id}) }}">
+      <a href="{{ path('tablature_view', {'id': tablature.id}) }}">
         {{ tablature.title }}
       </a>
     </li>

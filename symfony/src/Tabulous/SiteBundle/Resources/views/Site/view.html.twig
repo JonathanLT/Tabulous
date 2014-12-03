@@ -8,15 +8,15 @@
 
 {% block tabulous_body %}
 
-  <h2>{{ tablature.title }}</h2>
-  <i>Par {{ tablature.author }}, le {{ tablature.date|date('d/m/Y') }}</i>
+  <h1>- {{ tab.nomMusique }} -</h1>
+  <i>Par {{ tab.idArtiste.getNom() }}, notée {{ tab.moyenne }}</i>
 
   <div class="well">
-    {{ tablature.content }}
+    {{ tab.format }}
   </div>
 
   <p>
-    <a href="{{ path('tablature_projet_home') }}" class="btn btn-default">
+    <a href="{{ path('tablature_liste') }}" class="btn btn-default">
       <i class="glyphicon glyphicon-chevron-left"></i>
       Retour à la liste
     </a>

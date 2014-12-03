@@ -36,16 +36,6 @@ class Commentaire
     private $contenu;
 
     /**
-     * @var \Membre
-     *
-     * @ORM\ManyToOne(targetEntity="Membre")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="idMembre", referencedColumnName="id")
-     * })
-     */
-    private $idmembre;
-
-    /**
      * @var \Tablature
      *
      * @ORM\ManyToOne(targetEntity="Tablature")
@@ -54,6 +44,16 @@ class Commentaire
      * })
      */
     private $idtablature;
+
+    /**
+     * @var \Membre
+     *
+     * @ORM\ManyToOne(targetEntity="Membre")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="idMembre", referencedColumnName="id")
+     * })
+     */
+    private $idmembre;
 
 
 
@@ -114,29 +114,6 @@ class Commentaire
     }
 
     /**
-     * Set idmembre
-     *
-     * @param \Tabulous\TablatureBundle\Entity\Membre $idmembre
-     * @return Commentaire
-     */
-    public function setIdmembre(\Tabulous\TablatureBundle\Entity\Membre $idmembre = null)
-    {
-        $this->idmembre = $idmembre;
-
-        return $this;
-    }
-
-    /**
-     * Get idmembre
-     *
-     * @return \Tabulous\TablatureBundle\Entity\Membre 
-     */
-    public function getIdmembre()
-    {
-        return $this->idmembre;
-    }
-
-    /**
      * Set idtablature
      *
      * @param \Tabulous\TablatureBundle\Entity\Tablature $idtablature
@@ -157,5 +134,28 @@ class Commentaire
     public function getIdtablature()
     {
         return $this->idtablature;
+    }
+
+    /**
+     * Set idmembre
+     *
+     * @param \Tabulous\TablatureBundle\Entity\Membre $idmembre
+     * @return Commentaire
+     */
+    public function setIdmembre(\Tabulous\TablatureBundle\Entity\Membre $idmembre = null)
+    {
+        $this->idmembre = $idmembre;
+
+        return $this;
+    }
+
+    /**
+     * Get idmembre
+     *
+     * @return \Tabulous\TablatureBundle\Entity\Membre 
+     */
+    public function getIdmembre()
+    {
+        return $this->idmembre;
     }
 }

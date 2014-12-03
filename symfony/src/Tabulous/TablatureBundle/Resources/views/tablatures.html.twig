@@ -8,18 +8,35 @@
 
 {% block tabulous_body %}
 
-  <ul>
+  <table id="tablature"  cellspacing="4" cellpadding="6"  border="4" class="tab_table">
+          <caption><h1>Tablatures</h1></caption>
+            <thead> 
+               <tr>
+             <th>Title</th>
+             <th>Artist</th>
+             <th>Instrument</th>
+             <th>Kind</th>
+             <th>Member</th>
+             <th>Rate</th>
+            </tr>
+           </thead>
+          <tbody>
     {% for tablature in listTablature %}
-      <li>
-        <a href="{{ path('tablature_projet_view', {'id': tablature.id}) }}">
-          {{ tablature.title }}
-        </a>
-        par {{ tablature.author }},
-        le {{ tablature.date|date('d/m/Y') }}
-      </li>
+       
+
+        <tr align="center">
+            <td> <a href="{{ path('tablature_view', {'id': tablature.id}) }}">{{ tablature.nommusique }}</a></td>
+            <td><a href="{{ path('artiste_view', {'id': tablature.idartiste.id }) }}"> {{ tablature.idartiste.nom }} </a></td>
+            <td><a href="{{ path('artiste_view', {'id': tablature.idartiste.id }) }}"> {{ tablature.idinstrument.nom }} </a></td>
+            <td><a href="{{ path('artiste_view', {'id': tablature.idartiste.id }) }}"> {{ tablature.idgenre.nom }} </a></td>
+            <td><a href="{{ path('artiste_view', {'id': tablature.idartiste.id }) }}"> {{ tablature.idmembre.pseudo }} </a></td>
+            <td><a href="{{ path('artiste_view', {'id': tablature.idartiste.id }) }}"> {{ tablature.moyenne }} </a></td>
+          </tr>
+       
     {% else %}
-      <li>Pas (encore !) de tablatures</li>
+      <p>Pas (encore !) de tablatures</p>
     {% endfor %}
-  </ul>
+    </tbody></table>
+  
 
 {% endblock %}

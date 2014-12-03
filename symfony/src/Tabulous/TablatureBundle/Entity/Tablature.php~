@@ -45,9 +45,9 @@ class Tablature
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="date", type="date", nullable=false)
+     * @ORM\Column(name="derniereConsultation", type="datetime", nullable=false)
      */
-    private $date;
+    private $derniereconsultation;
 
     /**
      * @var float
@@ -92,26 +92,6 @@ class Tablature
     private $nbnote;
 
     /**
-     * @var \Artiste
-     *
-     * @ORM\ManyToOne(targetEntity="Artiste")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="idArtiste", referencedColumnName="id")
-     * })
-     */
-    private $idartiste;
-
-    /**
-     * @var \Genre
-     *
-     * @ORM\ManyToOne(targetEntity="Genre")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="idGenre", referencedColumnName="id")
-     * })
-     */
-    private $idgenre;
-
-    /**
      * @var \Instrument
      *
      * @ORM\ManyToOne(targetEntity="Instrument")
@@ -130,6 +110,26 @@ class Tablature
      * })
      */
     private $idmembre;
+
+    /**
+     * @var \Artiste
+     *
+     * @ORM\ManyToOne(targetEntity="Artiste")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="idArtiste", referencedColumnName="id")
+     * })
+     */
+    private $idartiste;
+
+    /**
+     * @var \Genre
+     *
+     * @ORM\ManyToOne(targetEntity="Genre")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="idGenre", referencedColumnName="id")
+     * })
+     */
+    private $idgenre;
 
 
 }

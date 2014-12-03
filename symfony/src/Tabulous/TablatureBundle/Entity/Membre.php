@@ -78,14 +78,18 @@ class Membre
     private $pseudo;
 
     /**
-     * @var \Genre
+     * @var \DateTime
      *
-     * @ORM\ManyToOne(targetEntity="Genre")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="idGenre", referencedColumnName="id")
-     * })
+     * @ORM\Column(name="dateEnregistrement", type="datetime", nullable=false)
      */
-    private $idgenre;
+    private $dateenregistrement;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="administrateur", type="integer", nullable=false)
+     */
+    private $administrateur;
 
     /**
      * @var \Instrument
@@ -96,6 +100,16 @@ class Membre
      * })
      */
     private $idinstrument;
+
+    /**
+     * @var \Genre
+     *
+     * @ORM\ManyToOne(targetEntity="Genre")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="idGenre", referencedColumnName="id")
+     * })
+     */
+    private $idgenre;
 
 
 
@@ -294,26 +308,49 @@ class Membre
     }
 
     /**
-     * Set idgenre
+     * Set dateenregistrement
      *
-     * @param \Tabulous\TablatureBundle\Entity\Genre $idgenre
+     * @param \DateTime $dateenregistrement
      * @return Membre
      */
-    public function setIdgenre(\Tabulous\TablatureBundle\Entity\Genre $idgenre = null)
+    public function setDateenregistrement($dateenregistrement)
     {
-        $this->idgenre = $idgenre;
+        $this->dateenregistrement = $dateenregistrement;
 
         return $this;
     }
 
     /**
-     * Get idgenre
+     * Get dateenregistrement
      *
-     * @return \Tabulous\TablatureBundle\Entity\Genre 
+     * @return \DateTime 
      */
-    public function getIdgenre()
+    public function getDateenregistrement()
     {
-        return $this->idgenre;
+        return $this->dateenregistrement;
+    }
+
+    /**
+     * Set administrateur
+     *
+     * @param integer $administrateur
+     * @return Membre
+     */
+    public function setAdministrateur($administrateur)
+    {
+        $this->administrateur = $administrateur;
+
+        return $this;
+    }
+
+    /**
+     * Get administrateur
+     *
+     * @return integer 
+     */
+    public function getAdministrateur()
+    {
+        return $this->administrateur;
     }
 
     /**
@@ -337,5 +374,28 @@ class Membre
     public function getIdinstrument()
     {
         return $this->idinstrument;
+    }
+
+    /**
+     * Set idgenre
+     *
+     * @param \Tabulous\TablatureBundle\Entity\Genre $idgenre
+     * @return Membre
+     */
+    public function setIdgenre(\Tabulous\TablatureBundle\Entity\Genre $idgenre = null)
+    {
+        $this->idgenre = $idgenre;
+
+        return $this;
+    }
+
+    /**
+     * Get idgenre
+     *
+     * @return \Tabulous\TablatureBundle\Entity\Genre 
+     */
+    public function getIdgenre()
+    {
+        return $this->idgenre;
     }
 }

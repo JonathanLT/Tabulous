@@ -1,29 +1,8 @@
 # src/OC/PlatformBundle/Resources/config/routing.yml
 
-tablature_projet_home:
+site_home:
     path:      /{page}
     defaults:  { _controller: SiteBundle:Site:index, page: 1 }
     requirements:
         page: \d*
 
-tablature_projet_tablatures:
-    path:      /tablatures
-    defaults: { _controller: SiteBundle:Site:tablatures }
-
-tablature_projet_view:
-    path:      /tablature/{id}
-    defaults:  { _controller: SiteBundle:Site:view }
-    requirements:
-        id: \d+
-
-tablature_projet_log:
-    path:      /user
-    defaults:  { _controller: SiteBundle:Site:user }
-    requirements:
-        id: \d+
-
-tablature_projet_register:
-    path:      /register
-    defaults:  { _controller: SiteBundle:Site:register }
-    requirements:
-        id: \d+

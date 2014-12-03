@@ -1,84 +1,90 @@
-{# app/Resources/views/layout.html.twig #}
-
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{% block title %}Tabulous{% endblock %}</title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+{% stylesheets 'bundles/site/tab_site.css' filter='cssrewrite' %}
+    <link rel="stylesheet" href="{{ asset_url }}" type="text/css"/>
+{% endstylesheets %}
 
-  <title>{% block title %}Tabulous{% endblock %}</title>
-
-  {% block stylesheets %}
-    {# On charge le CSS de bootstrap depuis le site directement #}
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-  {% endblock %}
 </head>
-
 <body>
-  <div class="container">
-    <div id="header" class="jumbotron">
-      <h1>TABULOUS <small>We are Fabulous!</small></h1>
-      <p><pre>
+<div id="templatemo_container">
 
-      </pre>
-      </p>
-      <p>
-      <div class="row">
-  <div class="col-md-8">
-        <a class="btn btn-primary btn-lg" href="{{ path('tablature_projet_home') }}">
-        <span class="glyphicon glyphicon-home"></span>
-          Home »
-        </a>
-        <a class="btn btn-primary btn-lg" href="{{ path('tablature_projet_tablatures') }}">
-         <span class="glyphicon glyphicon-music"></span> Tablatures »
-        </a>
-        <a class="btn btn-primary btn-lg" href="http://localhost/Symfony/web/app_dev.php/login">
-          <span class="glyphicon glyphicon-stats"></span>
-          Statistics »
-        </a>
-        <a class="btn btn-primary btn-lg" href="http://localhost/Symfony/web/app_dev.php/login">
-          <span class="glyphicon glyphicon-pencil"></span>
-          Forum »
-        </a>
-  </div>
-  <div class="col-md-3 col-md-offset-1">
-        <a class="btn btn-primary btn-lg" href="{{ path('tablature_projet_log')}}">
-          Log-in »
-        </a>
-        <a class="btn btn-primary btn-lg" href="{{ path('tablature_projet_register')}}">
-          Register »
-        </a>
+  <div id="templatemo_header">
+      <div id="templatemo_title">
+            <div id="templatemo_sitetitle">TAB<span>ULOUS</span></div>
         </div>
-        </div>
-      </p>
     </div>
 
-    <div class="row">
-      <div id="menu" class="col-md-3">
-        <h4>Dernières tablatures ajoutées</h4>
-        {{ render(controller("SiteBundle:Site:menu", {'limit': 3})) }}
-
-        <h4>Dernières tablatures consultées</h4>
-        {{ render(controller("SiteBundle:Site:menu", {'limit': 3})) }}
+  <div id="templatemo_banner">
+        <div id="templatemo_banner_text">
+            <div id="banner_title">Tabulous, we are Fabulous !</div>
+            <p>
+            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nunc quis sem nec tellus blandit tincidunt. Duis vitae velit sed dui malesuada dignissim. Donec mollis aliquet ligula. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nunc quis sem nec tellus blandit tincidunt.
+            </p>
       </div>
-      <div id="content" class="col-md-9">
-        {% block body %}
-        {% endblock %}
+  </div>
+    
+    <div id="templatemo_menu">
+      <ul>
+      <li><a class="btn btn-primary btn-lg" href="{{ path('site_home') }}"><span class="glyphicon-home"></span>Home »</a></li>
+      <li> <a class="btn btn-primary btn-lg" href="{{ path('tablature_liste') }}"><span class="glyphicon-music"></span> Tablatures »</a></li>
+      <li><a class="btn btn-primary btn-lg" href="http://localhost/Symfony/web/app_dev.php/login"><span class="glyphicon-pencil"></span>
+          Forum »</a></li>   
+      <li><a class="btn btn-primary btn-lg" href="{{ path('user_register') }}"><span class="glyphicon-user"></span>Register »</a></li> 
+      <li>
+          <form id="templatemo_login" method="get" action="#">
+                <input class="inputfield" name="keyword" type="text" id="keyword"/>
+                <input class="button" type="submit" name="Search" value="Search" />
+            </form>
+         </li>   
+        </ul>  
+    </div>
+    
+    <div id="templatemo_content">
+    
+      <div id="templatemo_left_column">
+            <h2>Customer Login</h2>
+            <div class="left_col_box">
+                <form method="get" action="#">
+                  <div class="form_row"><label>Email</label><input class="inputfield" name="email_address" type="text" id="email_addremss"/></div>
+                    <div class="form_row"><label>Password</label><input class="inputfield" name="password" type="password" id="password"/></div>
+                    <input class="button" type="submit" name="Submit" value="Login" />
+                </form>
+      </div>
+            
+            <h2>Some tablatures</h2>
+            <div class="left_col_box">
+                <div class="blog_box">
+                    <h3>Dernières tablatures ajoutées :</h3>
+                    {{ render(controller("SiteBundle:Site:menu", {'limit': 3})) }}
+        </div>
+                <div class="blog_box">
+                    <h3>Dernières tablatures consultées</h3>
+                    {{ render(controller("SiteBundle:Site:menu", {'limit': 3})) }}
+        </div>
+                <div class="blog_box">
+                    <h3>Tablatures les mieux notées :</h3>
+                    {{ render(controller("SiteBundle:Site:menu", {'limit': 3})) }}
+        </div> 
+               
       </div>
     </div>
-
-    <hr>
-
-    <footer>
-      <p>Tabulous Papam © {{ 'now'|date('Y') }} </p>
-    </footer>
+        
+        <div id="templatemo_right_column">
+          {% block body %}
+        {% endblock %}               
+            
+    </div>
+    </div>
+    
+  <div id="templatemo_footer">
+        <a href="#">Home</a> | <a href="#">Videos</a> | <a href="#">Audios</a> | <a href="#">Albums</a> | <a href="#">Artists</a> | <a href="#">Contact</a><br />
+        Copyright © <a href="#"><strong>Tabulous Papam</strong></a> 
   </div>
-
-  {% block javascripts %}
-    {# Ajoutez ces lignes JavaScript si vous comptez vous servir des fonctionnalités du bootstrap Twitter #}
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-  {% endblock %}
-
+</div>
 </body>
 </html>

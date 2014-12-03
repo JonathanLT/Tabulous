@@ -1,3 +1,15 @@
-tablature_homepage:
-    path:     /hello/{name}
-    defaults: { _controller: TablatureBundle:Default:index }
+tablature_liste:
+    path:      /tablatures
+    defaults: { _controller: TablatureBundle:Tablature:liste }
+
+tablature_view:
+    path:      /tablatures/{id}
+    defaults: { _controller: TablatureBundle:Tablature:tablatureView }
+    requirements:
+        id: \d+
+
+artiste_view:
+    path:      /artistes/{id}
+    defaults: { _controller: TablatureBundle:Tablature:artisteView }
+    requirements:
+        id: \d+

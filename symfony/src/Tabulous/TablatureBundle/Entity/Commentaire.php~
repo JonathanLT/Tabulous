@@ -36,16 +36,6 @@ class Commentaire
     private $contenu;
 
     /**
-     * @var \Membre
-     *
-     * @ORM\ManyToOne(targetEntity="Membre")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="idMembre", referencedColumnName="id")
-     * })
-     */
-    private $idmembre;
-
-    /**
      * @var \Tablature
      *
      * @ORM\ManyToOne(targetEntity="Tablature")
@@ -54,6 +44,16 @@ class Commentaire
      * })
      */
     private $idtablature;
+
+    /**
+     * @var \Membre
+     *
+     * @ORM\ManyToOne(targetEntity="Membre")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="idMembre", referencedColumnName="id")
+     * })
+     */
+    private $idmembre;
 
 
 }

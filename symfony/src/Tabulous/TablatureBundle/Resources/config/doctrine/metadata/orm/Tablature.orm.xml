@@ -20,16 +20,6 @@
     <field name="adressefichier" type="string" column="adresseFichier" length="255" nullable="false"/>
     <field name="cumulnote" type="integer" column="cumulNote" nullable="true"/>
     <field name="nbnote" type="integer" column="nbNote" nullable="true"/>
-    <many-to-one field="idmembre" target-entity="Membre">
-      <join-columns>
-        <join-column name="idMembre" referenced-column-name="id"/>
-      </join-columns>
-    </many-to-one>
-    <many-to-one field="idinstrument" target-entity="Instrument">
-      <join-columns>
-        <join-column name="idInstrument" referenced-column-name="id"/>
-      </join-columns>
-    </many-to-one>
     <many-to-one field="idgenre" target-entity="Genre">
       <join-columns>
         <join-column name="idGenre" referenced-column-name="id"/>
@@ -38,6 +28,16 @@
     <many-to-one field="idartiste" target-entity="Artiste">
       <join-columns>
         <join-column name="idArtiste" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idmembre" target-entity="Membre">
+      <join-columns>
+        <join-column name="idMembre" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idinstrument" target-entity="Instrument">
+      <join-columns>
+        <join-column name="idInstrument" referenced-column-name="id"/>
       </join-columns>
     </many-to-one>
   </entity>

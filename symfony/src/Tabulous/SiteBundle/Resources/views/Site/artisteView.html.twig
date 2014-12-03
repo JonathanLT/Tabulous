@@ -1,0 +1,49 @@
+{# src/OC/PlatformBundle/Resources/view/Advert/view.html.twig #}
+
+{% extends "SiteBundle::layout.html.twig" %}
+
+{% block title %}
+  Consultation d'artiste - {{ parent() }}
+{% endblock %}
+
+{% block tabulous_body %}
+
+<table id="tablature"  cellspacing="4" cellpadding="6"  border="4" class="tab_table">
+          <caption><h1>- {{ artiste.nom }} -</h1></caption>
+            <thead> 
+               <tr>
+             <th>Title</th>
+             <th>Instrument</th>
+             <th>Kind</th>
+             <th>Member</th>
+             <th>Rate</th>
+            </tr>
+           </thead>
+          <tbody>
+    {% for tablature in tablatures %}
+       
+
+        <tr align="center">
+            <td> <a href="{{ path('tablature_view', {'id': tablature.id}) }}">{{ tablature.nommusique }}</a></td>
+            <td><a href="{{ path('artiste_view', {'id': tablature.idinstrument.id }) }}"> {{ tablature.idinstrument.nom }} </a></td>
+            <td><a href="{{ path('artiste_view', {'id': tablature.idgenre.id }) }}"> {{ tablature.idgenre.nom }} </a></td>
+            <td><a href="{{ path('artiste_view', {'id': tablature.idmembre.id }) }}"> {{ tablature.idmembre.pseudo }} </a></td>
+            <td>{{ tablature.moyenne }}</td>
+          </tr>
+       
+    {% else %}
+      <p>Pas (encore !) de tablatures</p>
+    {% endfor %}
+    </tbody></table>
+  
+            
+
+  <p>
+    <a href="{{ path('tablature_liste') }}" class="btn btn-default">
+      <i class="glyphicon glyphicon-chevron-left"></i>
+      Retour à la liste
+    </a>
+   
+  </p>
+
+{% endblock %}

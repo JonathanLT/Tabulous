@@ -1,0 +1,110 @@
+{% extends "SiteBundle::layout.html.twig" %}
+
+{% block title %}
+  Join us ! - {{ parent() }}
+{% endblock %}
+
+{% block tabulous_body %}
+
+<div class="container">
+<h1><a>Register</a></h1>
+		<form id="form_935020" class="appnitro" enctype="multipart/form-data" method="post" action="">
+					<div class="form_description">
+			<p>Join us to leave comments, post on the forum and post a tablature !</p>
+		</div>						
+			<ul >
+			
+					<li id="li_1" >
+		<label class="description" for="element_1">Last name </label>
+		<div>
+			<input id="element_1" name="element_1" class="element text medium" type="text" maxlength="255" value=""/> 
+		</div><p class="guidelines" id="guide_1"><small>Enter your last name</small></p> 
+		</li>		<li id="li_8" >
+		<label class="description" for="element_8">First name </label>
+		<div>
+			<input id="element_8" name="element_8" class="element text medium" type="text" maxlength="255" value=""/> 
+		</div><p class="guidelines" id="guide_8"><small>Enter your first name</small></p> 
+		</li>		<li id="li_7" >
+		<label class="description" for="element_7">Username </label>
+		<div>
+			<input id="element_7" name="element_7" class="element text medium" type="text" maxlength="255" value=""/> 
+		</div><p class="guidelines" id="guide_7"><small>Enter an username</small></p> 
+		</li>		<li id="li_5" >
+		<label class="description" for="element_5">Password </label>
+		<div>
+			<input id="element_5" name="element_5" class="element text medium" type="text" maxlength="255" value=""/> 
+		</div><p class="guidelines" id="guide_5"><small>Enter a password to secure your profil</small></p> 
+		</li>		<li id="li_2" >
+		<label class="description" for="element_2">Confirm password </label>
+		<div>
+			<input id="element_2" name="element_2" class="element text medium" type="text" maxlength="255" value=""/> 
+		</div> 
+		</li>		<li id="li_3" >
+		<label class="description" for="element_3">Email </label>
+		<div>
+			<input id="element_3" name="element_3" class="element text medium" type="text" maxlength="255" value=""/> 
+		</div> 
+		</li>		<li id="li_4" >
+		<label class="description" for="element_4">Birthday </label>
+		<span>
+			<input id="element_4_1" name="element_4_1" class="element text" size="2" maxlength="2" value="" type="text"> /
+			<label for="element_4_1">MM</label>
+		</span>
+		<span>
+			<input id="element_4_2" name="element_4_2" class="element text" size="2" maxlength="2" value="" type="text"> /
+			<label for="element_4_2">DD</label>
+		</span>
+		<span>
+	 		<input id="element_4_3" name="element_4_3" class="element text" size="4" maxlength="4" value="" type="text">
+			<label for="element_4_3">YYYY</label>
+		</span>
+	
+		<span id="calendar_4">
+			<img id="cal_img_4" class="datepicker" src="calendar.gif" alt="Pick a date.">	
+		</span>
+		<script type="text/javascript">
+			Calendar.setup({
+			inputField	 : "element_4_3",
+			baseField    : "element_4",
+			displayArea  : "calendar_4",
+			button		 : "cal_img_4",
+			ifFormat	 : "%B %e, %Y",
+			onSelect	 : selectDate
+			});
+		</script>
+		 
+		</li>		<li id="li_9" >
+		<label class="description" for="element_9">Instrument </label>
+		<div>
+		<select class="element select medium" id="element_9" name="element_9"> 
+			<option value="" selected="selected"></option>
+<option value="1" >First option</option>
+
+		</select>
+		</div><p class="guidelines" id="guide_9"><small>Chose your favorite instrument</small></p> 
+		</li>		<li id="li_10" >
+		<label class="description" for="element_10">Kind of music </label>
+		<div>
+		<select class="element select medium" id="element_10" name="element_10"> 
+			<option value="" selected="selected"></option>
+<option value="1" >Third option</option>
+
+		</select>
+		</div> 
+		</li>		<li id="li_6" >
+		<label class="description" for="element_6">Upload a profil picture </label>
+		<div>
+			<input id="element_6" name="element_6" class="element file" type="file"/> 
+		</div>  
+		</li>
+			
+					<li class="buttons">
+			    <input type="hidden" name="form_id" value="935020" />
+			    
+				<input id="saveForm" class="button_text" type="submit" name="submit" value="Submit" />
+		</li>
+			</ul>
+		</form>	
+</div>
+
+{% endblock %}

@@ -45,9 +45,9 @@ class Tablature
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="date", type="date", nullable=false)
+     * @ORM\Column(name="derniereConsultation", type="datetime", nullable=false)
      */
-    private $date;
+    private $derniereconsultation;
 
     /**
      * @var float
@@ -92,26 +92,6 @@ class Tablature
     private $nbnote;
 
     /**
-     * @var \Artiste
-     *
-     * @ORM\ManyToOne(targetEntity="Artiste")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="idArtiste", referencedColumnName="id")
-     * })
-     */
-    private $idartiste;
-
-    /**
-     * @var \Genre
-     *
-     * @ORM\ManyToOne(targetEntity="Genre")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="idGenre", referencedColumnName="id")
-     * })
-     */
-    private $idgenre;
-
-    /**
      * @var \Instrument
      *
      * @ORM\ManyToOne(targetEntity="Instrument")
@@ -130,6 +110,26 @@ class Tablature
      * })
      */
     private $idmembre;
+
+    /**
+     * @var \Artiste
+     *
+     * @ORM\ManyToOne(targetEntity="Artiste")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="idArtiste", referencedColumnName="id")
+     * })
+     */
+    private $idartiste;
+
+    /**
+     * @var \Genre
+     *
+     * @ORM\ManyToOne(targetEntity="Genre")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="idGenre", referencedColumnName="id")
+     * })
+     */
+    private $idgenre;
 
 
 
@@ -213,26 +213,26 @@ class Tablature
     }
 
     /**
-     * Set date
+     * Set derniereconsultation
      *
-     * @param \DateTime $date
+     * @param \DateTime $derniereconsultation
      * @return Tablature
      */
-    public function setDate($date)
+    public function setDerniereconsultation($derniereconsultation)
     {
-        $this->date = $date;
+        $this->derniereconsultation = $derniereconsultation;
 
         return $this;
     }
 
     /**
-     * Get date
+     * Get derniereconsultation
      *
      * @return \DateTime 
      */
-    public function getDate()
+    public function getDerniereconsultation()
     {
-        return $this->date;
+        return $this->derniereconsultation;
     }
 
     /**
@@ -374,52 +374,6 @@ class Tablature
     }
 
     /**
-     * Set idartiste
-     *
-     * @param \Tabulous\TablatureBundle\Entity\Artiste $idartiste
-     * @return Tablature
-     */
-    public function setIdartiste(\Tabulous\TablatureBundle\Entity\Artiste $idartiste = null)
-    {
-        $this->idartiste = $idartiste;
-
-        return $this;
-    }
-
-    /**
-     * Get idartiste
-     *
-     * @return \Tabulous\TablatureBundle\Entity\Artiste 
-     */
-    public function getIdartiste()
-    {
-        return $this->idartiste;
-    }
-
-    /**
-     * Set idgenre
-     *
-     * @param \Tabulous\TablatureBundle\Entity\Genre $idgenre
-     * @return Tablature
-     */
-    public function setIdgenre(\Tabulous\TablatureBundle\Entity\Genre $idgenre = null)
-    {
-        $this->idgenre = $idgenre;
-
-        return $this;
-    }
-
-    /**
-     * Get idgenre
-     *
-     * @return \Tabulous\TablatureBundle\Entity\Genre 
-     */
-    public function getIdgenre()
-    {
-        return $this->idgenre;
-    }
-
-    /**
      * Set idinstrument
      *
      * @param \Tabulous\TablatureBundle\Entity\Instrument $idinstrument
@@ -464,4 +418,51 @@ class Tablature
     {
         return $this->idmembre;
     }
+
+    /**
+     * Set idartiste
+     *
+     * @param \Tabulous\TablatureBundle\Entity\Artiste $idartiste
+     * @return Tablature
+     */
+    public function setIdartiste(\Tabulous\TablatureBundle\Entity\Artiste $idartiste = null)
+    {
+        $this->idartiste = $idartiste;
+
+        return $this;
+    }
+
+    /**
+     * Get idartiste
+     *
+     * @return \Tabulous\TablatureBundle\Entity\Artiste 
+     */
+    public function getIdartiste()
+    {
+        return $this->idartiste;
+    }
+
+    /**
+     * Set idgenre
+     *
+     * @param \Tabulous\TablatureBundle\Entity\Genre $idgenre
+     * @return Tablature
+     */
+    public function setIdgenre(\Tabulous\TablatureBundle\Entity\Genre $idgenre = null)
+    {
+        $this->idgenre = $idgenre;
+
+        return $this;
+    }
+
+    /**
+     * Get idgenre
+     *
+     * @return \Tabulous\TablatureBundle\Entity\Genre 
+     */
+    public function getIdgenre()
+    {
+        return $this->idgenre;
+    }
 }
+

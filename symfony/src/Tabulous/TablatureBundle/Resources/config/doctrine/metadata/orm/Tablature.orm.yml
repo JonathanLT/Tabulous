@@ -1,0 +1,124 @@
+Tablature:
+    type: entity
+    table: tablature
+    indexes:
+        idGenre:
+            columns:
+                - idGenre
+        idInstrument:
+            columns:
+                - idInstrument
+        idMembre:
+            columns:
+                - idMembre
+        idArtiste:
+            columns:
+                - idArtiste
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        nommusique:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+            comment: ''
+            column: nomMusique
+        album:
+            type: string
+            nullable: false
+            length: 100
+            fixed: false
+            comment: ''
+        accordage:
+            type: string
+            nullable: false
+            length: 3
+            fixed: false
+            comment: ''
+        derniereconsultation:
+            type: datetime
+            nullable: false
+            comment: ''
+            column: derniereConsultation
+        moyenne:
+            type: float
+            nullable: false
+            precision: 10
+            scale: 0
+            comment: ''
+        format:
+            type: string
+            nullable: false
+            length: 3
+            fixed: false
+            comment: ''
+        niveau:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: 'Difficulté de la tablature'
+        adressefichier:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+            comment: ''
+            column: adresseFichier
+        cumulnote:
+            type: integer
+            nullable: true
+            unsigned: false
+            comment: ''
+            column: cumulNote
+        nbnote:
+            type: integer
+            nullable: true
+            unsigned: false
+            comment: ''
+            column: nbNote
+    manyToOne:
+        idinstrument:
+            targetEntity: Instrument
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                idInstrument:
+                    referencedColumnName: id
+            orphanRemoval: false
+        idmembre:
+            targetEntity: Membre
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                idMembre:
+                    referencedColumnName: id
+            orphanRemoval: false
+        idartiste:
+            targetEntity: Artiste
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                idArtiste:
+                    referencedColumnName: id
+            orphanRemoval: false
+        idgenre:
+            targetEntity: Genre
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                idGenre:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

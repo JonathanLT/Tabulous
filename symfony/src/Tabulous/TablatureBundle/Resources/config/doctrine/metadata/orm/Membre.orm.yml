@@ -1,0 +1,99 @@
+Membre:
+    type: entity
+    table: membre
+    indexes:
+        idInstrument:
+            columns:
+                - idInstrument
+        idGenre:
+            columns:
+                - idGenre
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        nom:
+            type: string
+            nullable: false
+            length: 30
+            fixed: false
+            comment: ''
+        prenom:
+            type: string
+            nullable: false
+            length: 30
+            fixed: false
+            comment: ''
+        datenaissance:
+            type: date
+            nullable: false
+            comment: ''
+            column: dateNaissance
+        adressmail:
+            type: string
+            nullable: false
+            length: 50
+            fixed: false
+            comment: ''
+            column: adressMail
+        photomembre:
+            type: string
+            nullable: false
+            length: 50
+            fixed: false
+            comment: ''
+            column: photoMembre
+        moyenne:
+            type: float
+            nullable: false
+            precision: 10
+            scale: 0
+            comment: ''
+        password:
+            type: string
+            nullable: false
+            length: 32
+            fixed: false
+            comment: ''
+        pseudo:
+            type: string
+            nullable: false
+            length: 32
+            fixed: false
+            comment: ''
+        dateenregistrement:
+            type: datetime
+            nullable: false
+            comment: ''
+            column: dateEnregistrement
+        administrateur:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+    manyToOne:
+        idinstrument:
+            targetEntity: Instrument
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                idInstrument:
+                    referencedColumnName: id
+            orphanRemoval: false
+        idgenre:
+            targetEntity: Genre
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                idGenre:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

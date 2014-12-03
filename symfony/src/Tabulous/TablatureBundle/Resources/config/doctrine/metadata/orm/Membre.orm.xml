@@ -16,14 +16,14 @@
     <field name="moyenne" type="float" column="moyenne" precision="10" scale="0" nullable="false"/>
     <field name="password" type="string" column="password" length="32" nullable="false"/>
     <field name="pseudo" type="string" column="pseudo" length="32" nullable="false"/>
-    <many-to-one field="idinstrument" target-entity="Instrument">
-      <join-columns>
-        <join-column name="idInstrument" referenced-column-name="id"/>
-      </join-columns>
-    </many-to-one>
     <many-to-one field="idgenre" target-entity="Genre">
       <join-columns>
         <join-column name="idGenre" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idinstrument" target-entity="Instrument">
+      <join-columns>
+        <join-column name="idInstrument" referenced-column-name="id"/>
       </join-columns>
     </many-to-one>
   </entity>
