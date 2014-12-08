@@ -3,23 +3,23 @@
 ##Gestion des membres :
 * inscription
 	
-	route : */register*
+	>route : */register*
 
 * connexion 
 	
-	route : */login*
+	>route : */login*
 
 * deconnexion
 	
-	route : */logout*
+	>route : */logout*
 
 * voir le profile
 	
-	route : */profile*
+	>route : */profile*
 
 * editer le profile
 	
-	route : */profile/edit*
+	>route : */profile/edit*
 
 #:: Attention ::
 J'ai modifier la table membre donc j'ai mise à jour *.sql* de la table. 
