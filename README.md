@@ -2,14 +2,19 @@
 ##Utilisation du bundle FOS
 ##Gestion des membres :
 * inscription :
+
 >route : /register
 * connexion : 
+
 >route : /login
 * deconnexion :
+
 >route : /logout
 * voir le profile :
+
 >route : /profile
 * editer le profile :
+
 >route : /profile/edit
 
 #:: Attention ::
