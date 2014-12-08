@@ -1,16 +1,16 @@
 #Changement Jonathan -08/12/2014:02:19-:
 ##Utilisation du bundle FOS
 ##Gestion des membres :
-* inscription :
-	route : */register*
-* connexion : 
-	route : */login*
-* deconnexion :
-	route : */logout*
-* voir le profile :
-	route : */profile*
-* editer le profile :
-	route : */profile/edit*
+* inscription
+	>route : */register*
+* connexion 
+	>route : */login*
+* deconnexion
+	>route : */logout*
+* voir le profile
+	>route : */profile*
+* editer le profile
+	>route : */profile/edit*
 
 #:: Attention ::
 J'ai modifier la table membre donc j'ai mise à jour *.sql* de la table. 
