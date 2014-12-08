@@ -3,7 +3,7 @@ parameters:
     database_driver: pdo_mysql
     database_host: 127.0.0.1
     database_port: null
-    database_name: basek1
+    database_name: tabulous_test
     database_user: root
     database_password: null
     mailer_transport: smtp
@@ -11,7 +11,7 @@ parameters:
     mailer_user: null
     mailer_password: null
     locale: fr
-    secret: ThisTokenIsNotSoSecretChangeIt
+    secret: 99cbbb3fb96b554f8ba402c86ffa33b4
     debug_toolbar: true
     debug_redirects: false
     use_assetic_controller: true
