@@ -33,6 +33,15 @@ CREATE TABLE IF NOT EXISTS `artiste` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
+INSERT INTO `artiste`(`id`, `nom`, `nbTablature`) VALUES 
+(1, 'Chinese Man', 3),
+(2, 'Metallica', 2),
+(3, 'Rammstein', 2),
+(4, 'Parov Stelar', 2),
+(5, 'Die Antwoord', 2),
+(6, 'Shaka Ponk', 1),
+(7, 'Beyoncé', 2);
+
 -- --------------------------------------------------------
 
 --
@@ -162,6 +171,7 @@ CREATE TABLE IF NOT EXISTS `tablature` (
   `album` varchar(100) NOT NULL,
   `accordage` varchar(3) NOT NULL,
   `date` date NOT NULL,
+  `derniereConsultation` datetime NOT NULL default now() on update now(),
   `moyenne` double NOT NULL,
   `format` varchar(3) NOT NULL,
   `niveau` int(11) NOT NULL COMMENT 'Difficulté de la tablature',
@@ -177,6 +187,23 @@ CREATE TABLE IF NOT EXISTS `tablature` (
   KEY `idMembre` (`idMembre`),
   KEY `idArtiste` (`idArtiste`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+INSERT INTO `tablature`(`nomMusique`, `idArtiste`, `album`, `accordage`, `derniereConsultation`, `moyenne`, `format`, `niveau`, `adresseFichier`, `idGenre`, `cumulNote`, `nbNote`, `idInstrument`, `idMembre`) 
+VALUES 
+('Skank in the air',1,'Racing with the sun','E#','2014-11-21 00:34:20','0','txt','3','//schnek.txt',1,0,0,4,1),
+('Get up',1,'Racing with the sun','Standard','2014-11-21 00:34:22','0','txt','2','//schnek.txt',3,0,0,2,1),
+('Ordinary Man',1,'Racing with the sun','E','2014-11-21 01:34:20','0','pdf','1','//schnek.txt',4,0,0,1,1),
+('Mein Teil',3,'Reise, reise','D','2014-11-21 00:36:20','0','txt','4','//schnek.txt',5,0,0,5,1),
+('Sonne',3,'Reise, reise','C','2014-11-21 00:34:59','0','txt','1','//schnek.txt',4,0,0,2,1),
+('Memory Remains',2,'Battery','A','2014-11-21 10:34:20','0','pdf','1','//schnek.txt',1,0,0,1,1),
+('Fuel',2,'Battery','A#','2014-11-21 03:34:20','0','txt','1','//schnek.txt',9,0,0,2,1),
+('Catgroove',4,'JazzBeat','D#','2014-11-21 00:44:20','0','txt','3','//schnek.txt',2,0,0,4,1),
+('Libella Swing',4,'JazzBeat','C#','2014-11-21 00:14:20','0','txt','5','//schnek.txt',7,0,0,4,1),
+('Sum Luv',6,'The Geek and the Jerkin socks','E#','2014-11-21 00:32:20','0','txt','3','//schnek.txt',5,0,0,5,1),
+('Hell o',6,'The great babine','D#','2014-11-21 00:15:20','0','gp6','3','//schnek.txt',10,0,0,3,1),
+('Run the world',7,'Bitches','D','2014-11-21 08:34:20','0','txt','4','//schnek.txt',4,0,0,2,1),
+('Xpensiv Shit',5,'Fjook lo naillers','C','2014-11-21 00:34:50','0','txt','3','//schnek.txt',3,0,0,3,1),
+('Rich Bitch',5,'Fjook lo naillers','E','2014-11-21 00:39:20','0','gp6','3','//schnek.txt',1,0,0,2,1);
 
 --
 -- Contraintes pour les tables exportées
