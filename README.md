@@ -1,15 +1,15 @@
 #Changement Jonathan -08/12/2014:02:19-:
 ##Utilisation du bundle FOS
 ##Gestion des membres :
-###inscription :
+inscription :
 >route : /register
-###connexion : 
+connexion : 
 >route : /login
-###deconnexion :
+deconnexion :
 >route : /logout
-###voir le profile :
+voir le profile :
 >route : /profile
-###editer le profile :
+editer le profile :
 >route : /profile/edit
 ---------------------------------------
 :: Attention ::
