@@ -30,11 +30,10 @@
     
     <div id="templatemo_menu">
       <ul>
-      <li><a class="btn btn-primary btn-lg" href="{{ path('site_home') }}"><span class="glyphicon-home"></span>Home »</a></li>
-      <li> <a class="btn btn-primary btn-lg" href="{{ path('tablature_liste') }}"><span class="glyphicon-music"></span> Tablatures »</a></li>
-      <li><a class="btn btn-primary btn-lg" href="http://localhost/Symfony/web/app_dev.php/login"><span class="glyphicon-pencil"></span>
-          Forum »</a></li>   
-      <li><a class="btn btn-primary btn-lg" href="{{ path('user_register') }}"><span class="glyphicon-user"></span>Register »</a></li> 
+      <li><a class="btn btn-primary btn-lg" href="{{ path('site_home') }}">Home »</a></li>
+      <li> <a class="btn btn-primary btn-lg" href="{{ path('tablature_liste') }}">Tablatures »</a></li>
+      <li><a class="btn btn-primary btn-lg" href="">Artistes »</a></li>   
+      <li><a class="btn btn-primary btn-lg" href="{{ path('user_register') }}">Register »</a></li> 
       <li>
           <form id="templatemo_login" method="get" action="#">
                 <input class="inputfield" name="keyword" type="text" id="keyword"/>
@@ -47,7 +46,7 @@
     <div id="templatemo_content">
     
       <div id="templatemo_left_column">
-            <h2>Customer Login</h2>
+            <h2>Sign in »</h2>
             <div class="left_col_box">
                 <form method="get" action="#">
                   <div class="form_row"><label>Email</label><input class="inputfield" name="email_address" type="text" id="email_addremss"/></div>
@@ -56,19 +55,19 @@
                 </form>
       </div>
             
-            <h2>Some tablatures</h2>
+            <h2>What's new ?</h2>
             <div class="left_col_box">
                 <div class="blog_box">
-                    <h3>Dernières tablatures ajoutées :</h3>
-                    {{ render(controller("SiteBundle:Site:menu", {'limit': 3})) }}
+                    <h3>Last tablatures added :</h3>
+                    {{ render(controller("SiteBundle:Site:last_add")) }}
         </div>
                 <div class="blog_box">
-                    <h3>Dernières tablatures consultées</h3>
-                    {{ render(controller("SiteBundle:Site:menu", {'limit': 3})) }}
+                    <h3>Last tablatures checked :</h3>
+                    {{ render(controller("SiteBundle:Site:last_check")) }}
         </div>
                 <div class="blog_box">
-                    <h3>Tablatures les mieux notées :</h3>
-                    {{ render(controller("SiteBundle:Site:menu", {'limit': 3})) }}
+                    <h3>Best tablatures rate :</h3>
+                    {{ render(controller("SiteBundle:Site:best_rate")) }}
         </div> 
                
       </div>

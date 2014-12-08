@@ -11,36 +11,7 @@ class TablatureController extends Controller
 {
     public function listeAction()
   {
-    /* $listTablature = array(
-      array(
-        'title'   => 'Rammstein - Rosenrot',
-        'id'      => 1,
-        'author'  => 'Alexandre',
-        'content' => 'Tablature basse',
-        'date'    => new \Datetime()),
-      array(
-        'title'   => 'System of a Down - Pictures',
-        'id'      => 2,
-        'author'  => 'Hugo',
-        'content' => 'Solo guitare',
-        'date'    => new \Datetime()),
-      array(
-        'title'   => 'Billy Talent - Fallen Leaves',
-        'id'      => 3,
-        'author'  => 'Mathieu',
-        'content' => 'Rythmique + paroles',
-        'date'    => new \Datetime())
-    );
-
-    return $this->render('TablatureBundle::tablatures.html.twig', array(
-      'listTablature' => $listTablature
-    ));
-    */
-
-
-	$listTablature = $this->getDoctrine()->getRepository('TablatureBundle:Tablature')->FindAll();
-
-	
+    $listTablature = $this->getDoctrine()->getRepository('TablatureBundle:Tablature')->FindAll();
 
 	return $this->render('TablatureBundle::tablatures.html.twig', array(
       'listTablature' => $listTablature
@@ -50,24 +21,15 @@ class TablatureController extends Controller
 
   public function tablatureViewAction($id)
     {
-      /* $tablature = array(
-        'title'   => 'Rammstein - Rosenrot',
-        'id'      => $id,
-        'author'  => 'Alexandre',
-        'content' => 'Tablature basse',
-        'date'    => new \Datetime()
-      );
-
-      return $this->render('SiteBundle:Site:view.html.twig', array(
-        'tablature' => $tablature
-      )); */
-
-
-        $tab = $this->getDoctrine()->getManager()->getRepository('TablatureBundle:Tablature')->find($id);
+      $em = $this->getDoctrine()->getManager();
+      $tab = $em->getRepository('TablatureBundle:Tablature')->find($id);
 
         if (!$tab) {
             throw $this->createNotFoundException('Unable to find tablature.');
         }
+ 
+        $tab->setderniereconsultation(new \DateTime());
+    	$em->flush();
 
         return $this->render('SiteBundle:Site:view.html.twig', array(
             'tab' => $tab

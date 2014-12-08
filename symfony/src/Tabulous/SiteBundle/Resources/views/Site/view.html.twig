@@ -9,7 +9,7 @@
 {% block tabulous_body %}
 
   <h1>- {{ tab.nomMusique }} -</h1>
-  <i>Par {{ tab.idArtiste.getNom() }}, notée {{ tab.moyenne }}</i>
+  <i>Par <a href="{{ path('artiste_view', {'id': tab.idartiste.id }) }}">{{ tab.idArtiste.getNom() }}</a>, notée {{ tab.moyenne }}</i>
 
   <div class="well">
     {{ tab.format }}
@@ -17,16 +17,7 @@
 
   <p>
     <a href="{{ path('tablature_liste') }}" class="btn btn-default">
-      <i class="glyphicon glyphicon-chevron-left"></i>
-      Retour à la liste
-    </a>
-    <a href="" class="btn btn-default">
-      <i class="glyphicon glyphicon-edit"></i>
-      Modifier l'annonce
-    </a>
-    <a href="" class="btn btn-danger">
-      <i class="glyphicon glyphicon-trash"></i>
-      Supprimer l'annonce
+      Retour à la liste »
     </a>
   </p>
 

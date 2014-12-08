@@ -1,0 +1,14 @@
+{# src/OC/PlatformBundle/Resources/views/Advert/menu.html.twig #}
+
+{# Ce template n'hérite de personne,
+   tout comme le template inclus avec {{ include() }}. #}
+
+<ul class="nav nav-pills nav-stacked">
+  					{% for tablature2 in listTablature2 %}
+                      <li><a href="{{ path('tablature_view', {'id': tablature2.id}) }}">{{ tablature2.nommusique }}</a>
+                      <a href="{{ path('artiste_view', {'id': tablature2.idartiste.id }) }}"> {{ tablature2.idartiste.nom }} </a>
+                      <a href="{{ path('artiste_view', {'id': tablature2.idinstrument.id }) }}"> {{ tablature2.idinstrument.nom }} </a></li>
+                    {% else %}
+                      <li><p>Pas (encore !) de tablatures</p></li>
+                    {% endfor %}
+</ul>

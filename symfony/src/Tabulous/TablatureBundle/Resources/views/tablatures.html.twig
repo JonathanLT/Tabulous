@@ -27,10 +27,10 @@
         <tr align="center">
             <td> <a href="{{ path('tablature_view', {'id': tablature.id}) }}">{{ tablature.nommusique }}</a></td>
             <td><a href="{{ path('artiste_view', {'id': tablature.idartiste.id }) }}"> {{ tablature.idartiste.nom }} </a></td>
-            <td><a href="{{ path('artiste_view', {'id': tablature.idartiste.id }) }}"> {{ tablature.idinstrument.nom }} </a></td>
-            <td><a href="{{ path('artiste_view', {'id': tablature.idartiste.id }) }}"> {{ tablature.idgenre.nom }} </a></td>
-            <td><a href="{{ path('artiste_view', {'id': tablature.idartiste.id }) }}"> {{ tablature.idmembre.pseudo }} </a></td>
-            <td><a href="{{ path('artiste_view', {'id': tablature.idartiste.id }) }}"> {{ tablature.moyenne }} </a></td>
+            <td><a href="{{ path('artiste_view', {'id': tablature.idinstrument.id }) }}"> {{ tablature.idinstrument.nom }} </a></td>
+            <td><a href="{{ path('artiste_view', {'id': tablature.idgenre.id }) }}"> {{ tablature.idgenre.nom }} </a></td>
+            <td><a href="{{ path('artiste_view', {'id': tablature.idmembre.id }) }}"> {{ tablature.idmembre.pseudo }} </a></td>
+            <td>{{ tablature.moyenne }}</td>
           </tr>
        
     {% else %}

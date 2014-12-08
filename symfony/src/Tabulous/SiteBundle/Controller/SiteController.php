@@ -17,21 +17,37 @@ public function indexAction($page)
   return $this->render('SiteBundle:Site:index.html.twig');
   }
 
-public function menuAction($limit)
+public function last_addAction()
   {
-    // On fixe en dur une liste ici, bien entendu par la suite
-    // on la récupérera depuis la BDD !
-    $listTablature = array(
-      array('id' => 2, 'title' => 'Metallica - One'),
-      array('id' => 5, 'title' => 'AC/DC - Highway to hell'),
-      array('id' => 9, 'title' => 'Rammstein - Sonne')
-    );
-
-    return $this->render('SiteBundle:Site:menu.html.twig', array(
-      // Tout l'intérêt est ici : le contrôleur passe
-      // les variables nécessaires au template !
-      'listTablature' => $listTablature
-    ));
+    $em = $this->getDoctrine()->getManager();          
+          $query1 = $em->createQuery(
+                  'SELECT t FROM TablatureBundle:Tablature t  ORDER BY t.id DESC'
+          );
+              $listTablature1 = $query1->setMaxResults(3)->getResult();
+              return $this->render('SiteBundle:Site:last_add.html.twig', array(
+                                      'listTablature1' => $listTablature1));
   }
+
+public function last_checkAction()
+  {
+    $em = $this->getDoctrine()->getManager();          
+          $query2 = $em->createQuery(
+                  'SELECT t FROM TablatureBundle:Tablature t  ORDER BY t.derniereconsultation DESC'
+          );
+              $listTablature2 = $query2->setMaxResults(3)->getResult();
+              return $this->render('SiteBundle:Site:last_check.html.twig', array(
+                                      'listTablature2' => $listTablature2));
+        }
+
+public function best_rateAction()
+  {
+    $em = $this->getDoctrine()->getManager();          
+$query3 = $em->createQuery(
+                  'SELECT t FROM TablatureBundle:Tablature t  ORDER BY t.moyenne ASC'
+          );
+              $listTablature3 = $query3->setMaxResults(3)->getResult();
+              return $this->render('SiteBundle:Site:best_rate.html.twig', array(
+                                      'listTablature3' => $listTablature3));
+        }
 
 }
