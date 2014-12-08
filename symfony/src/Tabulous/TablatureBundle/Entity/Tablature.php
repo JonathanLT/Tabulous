@@ -45,9 +45,16 @@ class Tablature
     /**
      * @var \DateTime
      *
+     * @ORM\Column(name="date", type="date", nullable=false)
+     */
+    private $date;
+
+    /**
+     * @var \DateTime
+     *
      * @ORM\Column(name="derniereConsultation", type="datetime", nullable=false)
      */
-    private $derniereconsultation;
+    private $derniereconsultation = 'CURRENT_TIMESTAMP';
 
     /**
      * @var float
@@ -92,26 +99,6 @@ class Tablature
     private $nbnote;
 
     /**
-     * @var \Instrument
-     *
-     * @ORM\ManyToOne(targetEntity="Instrument")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="idInstrument", referencedColumnName="id")
-     * })
-     */
-    private $idinstrument;
-
-    /**
-     * @var \Membre
-     *
-     * @ORM\ManyToOne(targetEntity="Membre")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="idMembre", referencedColumnName="id")
-     * })
-     */
-    private $idmembre;
-
-    /**
      * @var \Artiste
      *
      * @ORM\ManyToOne(targetEntity="Artiste")
@@ -130,6 +117,26 @@ class Tablature
      * })
      */
     private $idgenre;
+
+    /**
+     * @var \Instrument
+     *
+     * @ORM\ManyToOne(targetEntity="Instrument")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="idInstrument", referencedColumnName="id")
+     * })
+     */
+    private $idinstrument;
+
+    /**
+     * @var \Membre
+     *
+     * @ORM\ManyToOne(targetEntity="Membre")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="idMembre", referencedColumnName="id")
+     * })
+     */
+    private $idmembre;
 
 
 
@@ -210,6 +217,29 @@ class Tablature
     public function getAccordage()
     {
         return $this->accordage;
+    }
+
+    /**
+     * Set date
+     *
+     * @param \DateTime $date
+     * @return Tablature
+     */
+    public function setDate($date)
+    {
+        $this->date = $date;
+
+        return $this;
+    }
+
+    /**
+     * Get date
+     *
+     * @return \DateTime 
+     */
+    public function getDate()
+    {
+        return $this->date;
     }
 
     /**
@@ -374,52 +404,6 @@ class Tablature
     }
 
     /**
-     * Set idinstrument
-     *
-     * @param \Tabulous\TablatureBundle\Entity\Instrument $idinstrument
-     * @return Tablature
-     */
-    public function setIdinstrument(\Tabulous\TablatureBundle\Entity\Instrument $idinstrument = null)
-    {
-        $this->idinstrument = $idinstrument;
-
-        return $this;
-    }
-
-    /**
-     * Get idinstrument
-     *
-     * @return \Tabulous\TablatureBundle\Entity\Instrument 
-     */
-    public function getIdinstrument()
-    {
-        return $this->idinstrument;
-    }
-
-    /**
-     * Set idmembre
-     *
-     * @param \Tabulous\TablatureBundle\Entity\Membre $idmembre
-     * @return Tablature
-     */
-    public function setIdmembre(\Tabulous\TablatureBundle\Entity\Membre $idmembre = null)
-    {
-        $this->idmembre = $idmembre;
-
-        return $this;
-    }
-
-    /**
-     * Get idmembre
-     *
-     * @return \Tabulous\TablatureBundle\Entity\Membre 
-     */
-    public function getIdmembre()
-    {
-        return $this->idmembre;
-    }
-
-    /**
      * Set idartiste
      *
      * @param \Tabulous\TablatureBundle\Entity\Artiste $idartiste
@@ -464,5 +448,50 @@ class Tablature
     {
         return $this->idgenre;
     }
-}
 
+    /**
+     * Set idinstrument
+     *
+     * @param \Tabulous\TablatureBundle\Entity\Instrument $idinstrument
+     * @return Tablature
+     */
+    public function setIdinstrument(\Tabulous\TablatureBundle\Entity\Instrument $idinstrument = null)
+    {
+        $this->idinstrument = $idinstrument;
+
+        return $this;
+    }
+
+    /**
+     * Get idinstrument
+     *
+     * @return \Tabulous\TablatureBundle\Entity\Instrument 
+     */
+    public function getIdinstrument()
+    {
+        return $this->idinstrument;
+    }
+
+    /**
+     * Set idmembre
+     *
+     * @param \Tabulous\TablatureBundle\Entity\Membre $idmembre
+     * @return Tablature
+     */
+    public function setIdmembre(\Tabulous\TablatureBundle\Entity\Membre $idmembre = null)
+    {
+        $this->idmembre = $idmembre;
+
+        return $this;
+    }
+
+    /**
+     * Get idmembre
+     *
+     * @return \Tabulous\TablatureBundle\Entity\Membre 
+     */
+    public function getIdmembre()
+    {
+        return $this->idmembre;
+    }
+}

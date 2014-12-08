@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Membre
  *
- * @ORM\Table(name="membre", indexes={@ORM\Index(name="idInstrument", columns={"idInstrument"}), @ORM\Index(name="idGenre", columns={"idGenre"})})
+ * @ORM\Table(name="membre", uniqueConstraints={@ORM\UniqueConstraint(name="UNIQ_F6B4FB2992FC23A8", columns={"username_canonical"}), @ORM\UniqueConstraint(name="UNIQ_F6B4FB29A0D96FBF", columns={"email_canonical"})}, indexes={@ORM\Index(name="fk_membre_genre", columns={"idGenre"}), @ORM\Index(name="fk_membre_instrument", columns={"idInstrument"})})
  * @ORM\Entity
  */
 class Membre
@@ -24,82 +24,114 @@ class Membre
     /**
      * @var string
      *
-     * @ORM\Column(name="nom", type="string", length=30, nullable=false)
+     * @ORM\Column(name="username", type="string", length=255, nullable=false)
      */
-    private $nom;
+    private $username;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="prenom", type="string", length=30, nullable=false)
+     * @ORM\Column(name="username_canonical", type="string", length=255, nullable=false)
      */
-    private $prenom;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="dateNaissance", type="date", nullable=false)
-     */
-    private $datenaissance;
+    private $usernameCanonical;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="adressMail", type="string", length=50, nullable=false)
+     * @ORM\Column(name="email", type="string", length=255, nullable=false)
      */
-    private $adressmail;
+    private $email;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="photoMembre", type="string", length=50, nullable=false)
+     * @ORM\Column(name="email_canonical", type="string", length=255, nullable=false)
      */
-    private $photomembre;
+    private $emailCanonical;
 
     /**
-     * @var float
+     * @var boolean
      *
-     * @ORM\Column(name="moyenne", type="float", precision=10, scale=0, nullable=false)
+     * @ORM\Column(name="enabled", type="boolean", nullable=false)
      */
-    private $moyenne;
+    private $enabled;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="password", type="string", length=32, nullable=false)
+     * @ORM\Column(name="salt", type="string", length=255, nullable=false)
+     */
+    private $salt;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="password", type="string", length=255, nullable=false)
      */
     private $password;
 
     /**
-     * @var string
+     * @var \DateTime
      *
-     * @ORM\Column(name="pseudo", type="string", length=32, nullable=false)
+     * @ORM\Column(name="last_login", type="datetime", nullable=true)
      */
-    private $pseudo;
+    private $lastLogin;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="locked", type="boolean", nullable=false)
+     */
+    private $locked;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="expired", type="boolean", nullable=false)
+     */
+    private $expired;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="dateEnregistrement", type="datetime", nullable=false)
+     * @ORM\Column(name="expires_at", type="datetime", nullable=true)
      */
-    private $dateenregistrement;
+    private $expiresAt;
 
     /**
-     * @var integer
+     * @var string
      *
-     * @ORM\Column(name="administrateur", type="integer", nullable=false)
+     * @ORM\Column(name="confirmation_token", type="string", length=255, nullable=true)
      */
-    private $administrateur;
+    private $confirmationToken;
 
     /**
-     * @var \Instrument
+     * @var \DateTime
      *
-     * @ORM\ManyToOne(targetEntity="Instrument")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="idInstrument", referencedColumnName="id")
-     * })
+     * @ORM\Column(name="password_requested_at", type="datetime", nullable=true)
      */
-    private $idinstrument;
+    private $passwordRequestedAt;
+
+    /**
+     * @var array
+     *
+     * @ORM\Column(name="roles", type="array", nullable=false)
+     */
+    private $roles;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="credentials_expired", type="boolean", nullable=false)
+     */
+    private $credentialsExpired;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="credentials_expire_at", type="datetime", nullable=true)
+     */
+    private $credentialsExpireAt;
 
     /**
      * @var \Genre
@@ -110,6 +142,16 @@ class Membre
      * })
      */
     private $idgenre;
+
+    /**
+     * @var \Instrument
+     *
+     * @ORM\ManyToOne(targetEntity="Instrument")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="idInstrument", referencedColumnName="id")
+     * })
+     */
+    private $idinstrument;
 
 
 
@@ -124,141 +166,141 @@ class Membre
     }
 
     /**
-     * Set nom
+     * Set username
      *
-     * @param string $nom
+     * @param string $username
      * @return Membre
      */
-    public function setNom($nom)
+    public function setUsername($username)
     {
-        $this->nom = $nom;
+        $this->username = $username;
 
         return $this;
     }
 
     /**
-     * Get nom
+     * Get username
      *
      * @return string 
      */
-    public function getNom()
+    public function getUsername()
     {
-        return $this->nom;
+        return $this->username;
     }
 
     /**
-     * Set prenom
+     * Set usernameCanonical
      *
-     * @param string $prenom
+     * @param string $usernameCanonical
      * @return Membre
      */
-    public function setPrenom($prenom)
+    public function setUsernameCanonical($usernameCanonical)
     {
-        $this->prenom = $prenom;
+        $this->usernameCanonical = $usernameCanonical;
 
         return $this;
     }
 
     /**
-     * Get prenom
+     * Get usernameCanonical
      *
      * @return string 
      */
-    public function getPrenom()
+    public function getUsernameCanonical()
     {
-        return $this->prenom;
+        return $this->usernameCanonical;
     }
 
     /**
-     * Set datenaissance
+     * Set email
      *
-     * @param \DateTime $datenaissance
+     * @param string $email
      * @return Membre
      */
-    public function setDatenaissance($datenaissance)
+    public function setEmail($email)
     {
-        $this->datenaissance = $datenaissance;
+        $this->email = $email;
 
         return $this;
     }
 
     /**
-     * Get datenaissance
-     *
-     * @return \DateTime 
-     */
-    public function getDatenaissance()
-    {
-        return $this->datenaissance;
-    }
-
-    /**
-     * Set adressmail
-     *
-     * @param string $adressmail
-     * @return Membre
-     */
-    public function setAdressmail($adressmail)
-    {
-        $this->adressmail = $adressmail;
-
-        return $this;
-    }
-
-    /**
-     * Get adressmail
+     * Get email
      *
      * @return string 
      */
-    public function getAdressmail()
+    public function getEmail()
     {
-        return $this->adressmail;
+        return $this->email;
     }
 
     /**
-     * Set photomembre
+     * Set emailCanonical
      *
-     * @param string $photomembre
+     * @param string $emailCanonical
      * @return Membre
      */
-    public function setPhotomembre($photomembre)
+    public function setEmailCanonical($emailCanonical)
     {
-        $this->photomembre = $photomembre;
+        $this->emailCanonical = $emailCanonical;
 
         return $this;
     }
 
     /**
-     * Get photomembre
+     * Get emailCanonical
      *
      * @return string 
      */
-    public function getPhotomembre()
+    public function getEmailCanonical()
     {
-        return $this->photomembre;
+        return $this->emailCanonical;
     }
 
     /**
-     * Set moyenne
+     * Set enabled
      *
-     * @param float $moyenne
+     * @param boolean $enabled
      * @return Membre
      */
-    public function setMoyenne($moyenne)
+    public function setEnabled($enabled)
     {
-        $this->moyenne = $moyenne;
+        $this->enabled = $enabled;
 
         return $this;
     }
 
     /**
-     * Get moyenne
+     * Get enabled
      *
-     * @return float 
+     * @return boolean 
      */
-    public function getMoyenne()
+    public function getEnabled()
     {
-        return $this->moyenne;
+        return $this->enabled;
+    }
+
+    /**
+     * Set salt
+     *
+     * @param string $salt
+     * @return Membre
+     */
+    public function setSalt($salt)
+    {
+        $this->salt = $salt;
+
+        return $this;
+    }
+
+    /**
+     * Get salt
+     *
+     * @return string 
+     */
+    public function getSalt()
+    {
+        return $this->salt;
     }
 
     /**
@@ -285,95 +327,210 @@ class Membre
     }
 
     /**
-     * Set pseudo
+     * Set lastLogin
      *
-     * @param string $pseudo
+     * @param \DateTime $lastLogin
      * @return Membre
      */
-    public function setPseudo($pseudo)
+    public function setLastLogin($lastLogin)
     {
-        $this->pseudo = $pseudo;
+        $this->lastLogin = $lastLogin;
 
         return $this;
     }
 
     /**
-     * Get pseudo
-     *
-     * @return string 
-     */
-    public function getPseudo()
-    {
-        return $this->pseudo;
-    }
-
-    /**
-     * Set dateenregistrement
-     *
-     * @param \DateTime $dateenregistrement
-     * @return Membre
-     */
-    public function setDateenregistrement($dateenregistrement)
-    {
-        $this->dateenregistrement = $dateenregistrement;
-
-        return $this;
-    }
-
-    /**
-     * Get dateenregistrement
+     * Get lastLogin
      *
      * @return \DateTime 
      */
-    public function getDateenregistrement()
+    public function getLastLogin()
     {
-        return $this->dateenregistrement;
+        return $this->lastLogin;
     }
 
     /**
-     * Set administrateur
+     * Set locked
      *
-     * @param integer $administrateur
+     * @param boolean $locked
      * @return Membre
      */
-    public function setAdministrateur($administrateur)
+    public function setLocked($locked)
     {
-        $this->administrateur = $administrateur;
+        $this->locked = $locked;
 
         return $this;
     }
 
     /**
-     * Get administrateur
+     * Get locked
      *
-     * @return integer 
+     * @return boolean 
      */
-    public function getAdministrateur()
+    public function getLocked()
     {
-        return $this->administrateur;
+        return $this->locked;
     }
 
     /**
-     * Set idinstrument
+     * Set expired
      *
-     * @param \Tabulous\TablatureBundle\Entity\Instrument $idinstrument
+     * @param boolean $expired
      * @return Membre
      */
-    public function setIdinstrument(\Tabulous\TablatureBundle\Entity\Instrument $idinstrument = null)
+    public function setExpired($expired)
     {
-        $this->idinstrument = $idinstrument;
+        $this->expired = $expired;
 
         return $this;
     }
 
     /**
-     * Get idinstrument
+     * Get expired
      *
-     * @return \Tabulous\TablatureBundle\Entity\Instrument 
+     * @return boolean 
      */
-    public function getIdinstrument()
+    public function getExpired()
     {
-        return $this->idinstrument;
+        return $this->expired;
+    }
+
+    /**
+     * Set expiresAt
+     *
+     * @param \DateTime $expiresAt
+     * @return Membre
+     */
+    public function setExpiresAt($expiresAt)
+    {
+        $this->expiresAt = $expiresAt;
+
+        return $this;
+    }
+
+    /**
+     * Get expiresAt
+     *
+     * @return \DateTime 
+     */
+    public function getExpiresAt()
+    {
+        return $this->expiresAt;
+    }
+
+    /**
+     * Set confirmationToken
+     *
+     * @param string $confirmationToken
+     * @return Membre
+     */
+    public function setConfirmationToken($confirmationToken)
+    {
+        $this->confirmationToken = $confirmationToken;
+
+        return $this;
+    }
+
+    /**
+     * Get confirmationToken
+     *
+     * @return string 
+     */
+    public function getConfirmationToken()
+    {
+        return $this->confirmationToken;
+    }
+
+    /**
+     * Set passwordRequestedAt
+     *
+     * @param \DateTime $passwordRequestedAt
+     * @return Membre
+     */
+    public function setPasswordRequestedAt($passwordRequestedAt)
+    {
+        $this->passwordRequestedAt = $passwordRequestedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get passwordRequestedAt
+     *
+     * @return \DateTime 
+     */
+    public function getPasswordRequestedAt()
+    {
+        return $this->passwordRequestedAt;
+    }
+
+    /**
+     * Set roles
+     *
+     * @param array $roles
+     * @return Membre
+     */
+    public function setRoles($roles)
+    {
+        $this->roles = $roles;
+
+        return $this;
+    }
+
+    /**
+     * Get roles
+     *
+     * @return array 
+     */
+    public function getRoles()
+    {
+        return $this->roles;
+    }
+
+    /**
+     * Set credentialsExpired
+     *
+     * @param boolean $credentialsExpired
+     * @return Membre
+     */
+    public function setCredentialsExpired($credentialsExpired)
+    {
+        $this->credentialsExpired = $credentialsExpired;
+
+        return $this;
+    }
+
+    /**
+     * Get credentialsExpired
+     *
+     * @return boolean 
+     */
+    public function getCredentialsExpired()
+    {
+        return $this->credentialsExpired;
+    }
+
+    /**
+     * Set credentialsExpireAt
+     *
+     * @param \DateTime $credentialsExpireAt
+     * @return Membre
+     */
+    public function setCredentialsExpireAt($credentialsExpireAt)
+    {
+        $this->credentialsExpireAt = $credentialsExpireAt;
+
+        return $this;
+    }
+
+    /**
+     * Get credentialsExpireAt
+     *
+     * @return \DateTime 
+     */
+    public function getCredentialsExpireAt()
+    {
+        return $this->credentialsExpireAt;
     }
 
     /**
@@ -397,5 +554,28 @@ class Membre
     public function getIdgenre()
     {
         return $this->idgenre;
+    }
+
+    /**
+     * Set idinstrument
+     *
+     * @param \Tabulous\TablatureBundle\Entity\Instrument $idinstrument
+     * @return Membre
+     */
+    public function setIdinstrument(\Tabulous\TablatureBundle\Entity\Instrument $idinstrument = null)
+    {
+        $this->idinstrument = $idinstrument;
+
+        return $this;
+    }
+
+    /**
+     * Get idinstrument
+     *
+     * @return \Tabulous\TablatureBundle\Entity\Instrument 
+     */
+    public function getIdinstrument()
+    {
+        return $this->idinstrument;
     }
 }

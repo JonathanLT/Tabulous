@@ -36,16 +36,6 @@ class Commentaire
     private $contenu;
 
     /**
-     * @var \Tablature
-     *
-     * @ORM\ManyToOne(targetEntity="Tablature")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="idTablature", referencedColumnName="id")
-     * })
-     */
-    private $idtablature;
-
-    /**
      * @var \Membre
      *
      * @ORM\ManyToOne(targetEntity="Membre")
@@ -54,6 +44,16 @@ class Commentaire
      * })
      */
     private $idmembre;
+
+    /**
+     * @var \Tablature
+     *
+     * @ORM\ManyToOne(targetEntity="Tablature")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="idTablature", referencedColumnName="id")
+     * })
+     */
+    private $idtablature;
 
 
 
@@ -114,29 +114,6 @@ class Commentaire
     }
 
     /**
-     * Set idtablature
-     *
-     * @param \Tabulous\TablatureBundle\Entity\Tablature $idtablature
-     * @return Commentaire
-     */
-    public function setIdtablature(\Tabulous\TablatureBundle\Entity\Tablature $idtablature = null)
-    {
-        $this->idtablature = $idtablature;
-
-        return $this;
-    }
-
-    /**
-     * Get idtablature
-     *
-     * @return \Tabulous\TablatureBundle\Entity\Tablature 
-     */
-    public function getIdtablature()
-    {
-        return $this->idtablature;
-    }
-
-    /**
      * Set idmembre
      *
      * @param \Tabulous\TablatureBundle\Entity\Membre $idmembre
@@ -157,5 +134,28 @@ class Commentaire
     public function getIdmembre()
     {
         return $this->idmembre;
+    }
+
+    /**
+     * Set idtablature
+     *
+     * @param \Tabulous\TablatureBundle\Entity\Tablature $idtablature
+     * @return Commentaire
+     */
+    public function setIdtablature(\Tabulous\TablatureBundle\Entity\Tablature $idtablature = null)
+    {
+        $this->idtablature = $idtablature;
+
+        return $this;
+    }
+
+    /**
+     * Get idtablature
+     *
+     * @return \Tabulous\TablatureBundle\Entity\Tablature 
+     */
+    public function getIdtablature()
+    {
+        return $this->idtablature;
     }
 }
