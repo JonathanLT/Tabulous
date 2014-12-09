@@ -54,17 +54,17 @@ class ExceptionController
         return new Response($this->twig->render(
             (string) $this->findTemplate($request, $request->getRequestFormat(), $code, $this->debug),
             array(
-                'status_code'    => $code,
-                'status_text'    => isset(Response::$statusTexts[$code]) ? Response::$statusTexts[$code] : '',
-                'exception'      => $exception,
-                'logger'         => $logger,
+                'status_code' => $code,
+                'status_text' => isset(Response::$statusTexts[$code]) ? Response::$statusTexts[$code] : '',
+                'exception' => $exception,
+                'logger' => $logger,
                 'currentContent' => $currentContent,
             )
         ));
     }
 
     /**
-     * @param int     $startObLevel
+     * @param int $startObLevel
      *
      * @return string
      */
@@ -82,7 +82,7 @@ class ExceptionController
     /**
      * @param Request $request
      * @param string  $format
-     * @param int     $code       An HTTP response status code
+     * @param int     $code    An HTTP response status code
      * @param bool    $debug
      *
      * @return TemplateReferenceInterface

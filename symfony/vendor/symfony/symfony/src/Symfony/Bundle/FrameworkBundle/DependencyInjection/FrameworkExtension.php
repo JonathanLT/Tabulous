@@ -254,15 +254,15 @@ class FrameworkExtension extends Extension
 
         // Choose storage class based on the DSN
         $supported = array(
-            'sqlite'    => 'Symfony\Component\HttpKernel\Profiler\SqliteProfilerStorage',
-            'mysql'     => 'Symfony\Component\HttpKernel\Profiler\MysqlProfilerStorage',
-            'file'      => 'Symfony\Component\HttpKernel\Profiler\FileProfilerStorage',
-            'mongodb'   => 'Symfony\Component\HttpKernel\Profiler\MongoDbProfilerStorage',
-            'memcache'  => 'Symfony\Component\HttpKernel\Profiler\MemcacheProfilerStorage',
+            'sqlite' => 'Symfony\Component\HttpKernel\Profiler\SqliteProfilerStorage',
+            'mysql' => 'Symfony\Component\HttpKernel\Profiler\MysqlProfilerStorage',
+            'file' => 'Symfony\Component\HttpKernel\Profiler\FileProfilerStorage',
+            'mongodb' => 'Symfony\Component\HttpKernel\Profiler\MongoDbProfilerStorage',
+            'memcache' => 'Symfony\Component\HttpKernel\Profiler\MemcacheProfilerStorage',
             'memcached' => 'Symfony\Component\HttpKernel\Profiler\MemcachedProfilerStorage',
-            'redis'     => 'Symfony\Component\HttpKernel\Profiler\RedisProfilerStorage',
+            'redis' => 'Symfony\Component\HttpKernel\Profiler\RedisProfilerStorage',
         );
-        list($class, ) = explode(':', $config['dsn'], 2);
+        list($class,) = explode(':', $config['dsn'], 2);
         if (!isset($supported[$class])) {
             throw new \LogicException(sprintf('Driver "%s" is not supported for the profiler.', $class));
         }
@@ -425,9 +425,9 @@ class FrameworkExtension extends Extension
 
         $links = array(
             'textmate' => 'txmt://open?url=file://%%f&line=%%l',
-            'macvim'   => 'mvim://open?url=file://%%f&line=%%l',
-            'emacs'    => 'emacs://open?url=file://%%f&line=%%l',
-            'sublime'  => 'subl://open?url=file://%%f&line=%%l',
+            'macvim' => 'mvim://open?url=file://%%f&line=%%l',
+            'emacs' => 'emacs://open?url=file://%%f&line=%%l',
+            'sublime' => 'subl://open?url=file://%%f&line=%%l',
         );
 
         $container->setParameter('templating.helper.code.file_link_format', isset($links[$ide]) ? $links[$ide] : $ide);

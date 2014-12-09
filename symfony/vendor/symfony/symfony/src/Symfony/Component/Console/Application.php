@@ -723,9 +723,9 @@ class Application
                 $trace = $e->getTrace();
                 array_unshift($trace, array(
                     'function' => '',
-                    'file'     => $e->getFile() != null ? $e->getFile() : 'n/a',
-                    'line'     => $e->getLine() != null ? $e->getLine() : 'n/a',
-                    'args'     => array(),
+                    'file' => $e->getFile() != null ? $e->getFile() : 'n/a',
+                    'line' => $e->getLine() != null ? $e->getLine() : 'n/a',
+                    'args' => array(),
                 ));
 
                 for ($i = 0, $count = count($trace); $i < $count; $i++) {
@@ -843,8 +843,8 @@ class Application
 
         if (true === $input->hasParameterOption(array('--no-interaction', '-n'))) {
             $input->setInteractive(false);
-        } elseif (function_exists('posix_isatty') && $this->getHelperSet()->has('dialog')) {
-            $inputStream = $this->getHelperSet()->get('dialog')->getInputStream();
+        } elseif (function_exists('posix_isatty') && $this->getHelperSet()->has('question')) {
+            $inputStream = $this->getHelperSet()->get('question')->getInputStream();
             if (!@posix_isatty($inputStream)) {
                 $input->setInteractive(false);
             }

@@ -1,7 +1,7 @@
 # src/OC/PlatformBundle/Resources/config/routing.yml
 
 site_home:
-    path:      /{page}
+    path:      /
     defaults:  { _controller: SiteBundle:Site:index, page: 1 }
     requirements:
         page: \d*

@@ -1,7 +1,7 @@
 user_login:
     path:      /login
-    defaults: { _controller: UserBundle:User:login }
+    defaults: { _controller: FOSUserBundle:Security:login }
 
 user_register:
     path:      /register
-    defaults: { _controller: UserBundle:User:register }
+    defaults: { _controller: FOSUserBundle:Registration:register }

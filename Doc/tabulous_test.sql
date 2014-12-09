@@ -128,13 +128,13 @@ CREATE TABLE IF NOT EXISTS `membre` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(255) NOT NULL,
   `username_canonical` varchar(255) NOT NULL,
-  `email` varchar(255) NOT NULL,
+  `email` varchar(255)  NOT NULL,
   `email_canonical` varchar(255) NOT NULL,
+  `idGenre` int(11) NULL,
+  `idInstrument` int(11) NULL,
   `enabled` tinyint(1) NOT NULL,
   `salt` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `idGenre` int(11) DEFAULT NULL,
-  `idInstrument` int(11) DEFAULT NULL,
   `last_login` datetime DEFAULT NULL,
   `locked` tinyint(1) NOT NULL,
   `expired` tinyint(1) NOT NULL,
@@ -146,17 +146,15 @@ CREATE TABLE IF NOT EXISTS `membre` (
   `credentials_expire_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `UNIQ_F6B4FB2992FC23A8` (`username_canonical`),
-  UNIQUE KEY `UNIQ_F6B4FB29A0D96FBF` (`email_canonical`),
-  KEY `fk_membre_genre` (`idGenre`),
-  KEY `fk_membre_instrument` (`idInstrument`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+  UNIQUE KEY `UNIQ_F6B4FB29A0D96FBF` (`email_canonical`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 --
 -- Contenu de la table `membre`
 --
 
-INSERT INTO `membre` (`id`, `username`, `username_canonical`, `email`, `email_canonical`, `enabled`, `salt`, `password`, `idGenre`, `idInstrument`, `last_login`, `locked`, `expired`, `expires_at`, `confirmation_token`, `password_requested_at`, `roles`, `credentials_expired`, `credentials_expire_at`) VALUES
-(1, 'test', 'test', 'test@test.fr', 'test@test.fr', 1, 'rxytnq7xuvk8gc4kc808sw0oo0c4k0o', 'IDsIjmWdL2Dk4QdmIjH5+ZNXNSBWW+EInANFQTk2Z4/HtDCllZh0q7ubvkMcSXfnLk7HInUbCVJv79poGJcG2Q==', NULL, NULL, '2014-12-08 02:09:48', 0, 0, NULL, NULL, NULL, 'a:0:{}', 0, NULL);
+-- INSERT INTO `membre` (`id`, `username`, `username_canonical`, `email`, `email_canonical`, `enabled`, `salt`, `password`, `idGenre`, `idInstrument`, `last_login`, `locked`, `expired`, `expires_at`, `confirmation_token`, `password_requested_at`, `roles`, `credentials_expired`, `credentials_expire_at`) VALUES
+-- (1, 'test', 'test', 'test@test.fr', 'test@test.fr', 1, 'rxytnq7xuvk8gc4kc808sw0oo0c4k0o', 'IDsIjmWdL2Dk4QdmIjH5+ZNXNSBWW+EInANFQTk2Z4/HtDCllZh0q7ubvkMcSXfnLk7HInUbCVJv79poGJcG2Q==', NULL, NULL, '2014-12-08 02:09:48', 0, 0, NULL, NULL, NULL, 'a:0:{}', 0, NULL);
 
 -- --------------------------------------------------------
 
