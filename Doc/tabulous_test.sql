@@ -9,6 +9,8 @@
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
+CREATE DATABASE IF NOT EXISTS `tabulous_test` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `tabulous_test`;
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -107,17 +109,6 @@ CREATE TABLE IF NOT EXISTS `instrument` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
---
--- Contenu de la table `instrument`
---
-
-INSERT INTO `instrument` (`id`, `nom`) VALUES
-(1, 'Guitare acoustique'),
-(2, 'Guitare électrique'),
-(3, 'Batterie'),
-(4, 'Basse'),
-(5, 'Synthétiseur');
-
 -- --------------------------------------------------------
 
 --
@@ -186,23 +177,6 @@ CREATE TABLE IF NOT EXISTS `tablature` (
   KEY `idArtiste` (`idArtiste`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
-INSERT INTO `tablature`(`nomMusique`, `idArtiste`, `album`, `accordage`, `derniereConsultation`, `moyenne`, `format`, `niveau`, `adresseFichier`, `idGenre`, `cumulNote`, `nbNote`, `idInstrument`, `idMembre`) 
-VALUES 
-('Skank in the air',1,'Racing with the sun','E#','2014-11-21 00:34:20','0','txt','3','//schnek.txt',1,0,0,4,1),
-('Get up',1,'Racing with the sun','Standard','2014-11-21 00:34:22','0','txt','2','//schnek.txt',3,0,0,2,1),
-('Ordinary Man',1,'Racing with the sun','E','2014-11-21 01:34:20','0','pdf','1','//schnek.txt',4,0,0,1,1),
-('Mein Teil',3,'Reise, reise','D','2014-11-21 00:36:20','0','txt','4','//schnek.txt',5,0,0,5,1),
-('Sonne',3,'Reise, reise','C','2014-11-21 00:34:59','0','txt','1','//schnek.txt',4,0,0,2,1),
-('Memory Remains',2,'Battery','A','2014-11-21 10:34:20','0','pdf','1','//schnek.txt',1,0,0,1,1),
-('Fuel',2,'Battery','A#','2014-11-21 03:34:20','0','txt','1','//schnek.txt',9,0,0,2,1),
-('Catgroove',4,'JazzBeat','D#','2014-11-21 00:44:20','0','txt','3','//schnek.txt',2,0,0,4,1),
-('Libella Swing',4,'JazzBeat','C#','2014-11-21 00:14:20','0','txt','5','//schnek.txt',7,0,0,4,1),
-('Sum Luv',6,'The Geek and the Jerkin socks','E#','2014-11-21 00:32:20','0','txt','3','//schnek.txt',5,0,0,5,1),
-('Hell o',6,'The great babine','D#','2014-11-21 00:15:20','0','gp6','3','//schnek.txt',10,0,0,3,1),
-('Run the world',7,'Bitches','D','2014-11-21 08:34:20','0','txt','4','//schnek.txt',4,0,0,2,1),
-('Xpensiv Shit',5,'Fjook lo naillers','C','2014-11-21 00:34:50','0','txt','3','//schnek.txt',3,0,0,3,1),
-('Rich Bitch',5,'Fjook lo naillers','E','2014-11-21 00:39:20','0','gp6','3','//schnek.txt',1,0,0,2,1);
-
 --
 -- Contraintes pour les tables exportées
 --
@@ -229,6 +203,47 @@ ALTER TABLE `tablature`
   ADD CONSTRAINT `fk_tablature_genre` FOREIGN KEY (`idGenre`) REFERENCES `genre` (`id`),
   ADD CONSTRAINT `fk_tablature_instrument` FOREIGN KEY (`idInstrument`) REFERENCES `instrument` (`id`),
   ADD CONSTRAINT `fk_tablature_membre` FOREIGN KEY (`idMembre`) REFERENCES `membre` (`id`);
+
+
+--
+-- Contenu de la table `instrument`
+--
+
+INSERT INTO `instrument` (`id`, `nom`) VALUES
+(1, 'Guitare acoustique'),
+(2, 'Guitare électrique'),
+(3, 'Batterie'),
+(4, 'Basse'),
+(5, 'Synthétiseur');
+
+--
+-- Contenu de la table `membre`
+--
+
+INSERT INTO `membre` (`id`, `username`, `username_canonical`, `email`, `email_canonical`, `idGenre`, `idInstrument`, `enabled`, `salt`, `password`, `last_login`, `locked`, `expired`, `expires_at`, `confirmation_token`, `password_requested_at`, `roles`, `credentials_expired`, `credentials_expire_at`) VALUES
+(1, 'test', 'test', 'test@test.test', 'test@test.test', NULL, NULL, 1, 'ejtw2jsfihc8gg8cookww44040k0kcs', 'n1bqV7cv/eXHi39u2ehF9WECd1mtCT60pcnZ//M5R31vJ7x2UHIaBrvVf51k8G45G1WbRO1Y2NgJZeYZYVMdqg==', '2014-12-09 23:50:04', 0, 0, NULL, NULL, NULL, 'a:0:{}', 0, NULL);
+
+--
+-- Contenu de la table `tablature`
+--
+
+INSERT INTO `tablature`(`nomMusique`, `idArtiste`, `album`, `accordage`, `derniereConsultation`, `moyenne`, `format`, `niveau`, `adresseFichier`, `idGenre`, `cumulNote`, `nbNote`, `idInstrument`, `idMembre`) 
+VALUES 
+('Skank in the air',1,'Racing with the sun','E#','2014-11-21 00:34:20','0','txt','3','//schnek.txt',1,0,0,4,1),
+('Get up',1,'Racing with the sun','Standard','2014-11-21 00:34:22','0','txt','2','//schnek.txt',3,0,0,2,1),
+('Ordinary Man',1,'Racing with the sun','E','2014-11-21 01:34:20','0','pdf','1','//schnek.txt',4,0,0,1,1),
+('Mein Teil',3,'Reise, reise','D','2014-11-21 00:36:20','0','txt','4','//schnek.txt',5,0,0,5,1),
+('Sonne',3,'Reise, reise','C','2014-11-21 00:34:59','0','txt','1','//schnek.txt',4,0,0,2,1),
+('Memory Remains',2,'Battery','A','2014-11-21 10:34:20','0','pdf','1','//schnek.txt',1,0,0,1,1),
+('Fuel',2,'Battery','A#','2014-11-21 03:34:20','0','txt','1','//schnek.txt',9,0,0,2,1),
+('Catgroove',4,'JazzBeat','D#','2014-11-21 00:44:20','0','txt','3','//schnek.txt',2,0,0,4,1),
+('Libella Swing',4,'JazzBeat','C#','2014-11-21 00:14:20','0','txt','5','//schnek.txt',7,0,0,4,1),
+('Sum Luv',6,'The Geek and the Jerkin socks','E#','2014-11-21 00:32:20','0','txt','3','//schnek.txt',5,0,0,5,1),
+('Hell o',6,'The great babine','D#','2014-11-21 00:15:20','0','gp6','3','//schnek.txt',10,0,0,3,1),
+('Run the world',7,'Bitches','D','2014-11-21 08:34:20','0','txt','4','//schnek.txt',4,0,0,2,1),
+('Xpensiv Shit',5,'Fjook lo naillers','C','2014-11-21 00:34:50','0','txt','3','//schnek.txt',3,0,0,3,1),
+('Rich Bitch',5,'Fjook lo naillers','E','2014-11-21 00:39:20','0','gp6','3','//schnek.txt',1,0,0,2,1);
+
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
