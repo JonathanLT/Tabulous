@@ -14,7 +14,13 @@
   <div class="well">
     {{ tab.format }}
   </div>
-
+  <!-- Mettre l'affichage -->
+  <pre>
+  {% for line in affichage %}           
+    {{ line }}        
+  {% endfor %}
+  </pre>    
+  
   <p>
     <a href="{{ path('tablature_liste') }}" class="btn btn-default">
       Retour à la liste »
