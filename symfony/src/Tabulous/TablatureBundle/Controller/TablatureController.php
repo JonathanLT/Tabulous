@@ -23,7 +23,7 @@ class TablatureController extends Controller
   {
       // on se débarrasse de « __DIR__ » afin de ne pas avoir de problème lorsqu'on affiche
       // le document/image dans la vue.
-      return 'uploads/documents';
+      return '..\src\Tabulous\TablatureBundle\Resources\tablature';
   }
 
   public function tablatureViewAction($id)
@@ -37,7 +37,7 @@ class TablatureController extends Controller
  
         $tab->setderniereconsultation(new \DateTime());
     	  $em->flush();
-        $tablatures = file('..\src\Tabulous\TablatureBundle\Resources\tablature\\'.$tab->getadressefichier());
+        $tablatures = file($this->getUploadDir().$tab->getadressefichier());
         return $this->render('SiteBundle:Site:view.html.twig', array(
             'tab' => $tab, 'affichage' => $tablatures
         ));
