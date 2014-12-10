@@ -35,15 +35,6 @@ CREATE TABLE IF NOT EXISTS `artiste` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
-INSERT INTO `artiste`(`id`, `nom`, `nbTablature`) VALUES 
-(1, 'Chinese Man', 3),
-(2, 'Metallica', 2),
-(3, 'Rammstein', 2),
-(4, 'Parov Stelar', 2),
-(5, 'Die Antwoord', 2),
-(6, 'Shaka Ponk', 1),
-(7, 'Beyoncé', 2);
-
 -- --------------------------------------------------------
 
 --
@@ -72,30 +63,6 @@ CREATE TABLE IF NOT EXISTS `genre` (
   `nom` varchar(20) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=19 ;
-
---
--- Contenu de la table `genre`
---
-
-INSERT INTO `genre` (`id`, `nom`) VALUES
-(1, 'Rock'),
-(2, 'Metal'),
-(3, 'Reggae'),
-(4, 'Jazz'),
-(5, 'Funk'),
-(6, 'Blues'),
-(7, 'Classique'),
-(8, 'Variete Française'),
-(9, 'Electro'),
-(10, 'Rap'),
-(11, 'R''n''B'),
-(12, 'Soul'),
-(13, 'Disco'),
-(14, 'Pop'),
-(15, 'Country'),
-(16, 'Pop Rock'),
-(17, 'Ska'),
-(18, 'Experimentale');
 
 -- --------------------------------------------------------
 
@@ -139,13 +106,6 @@ CREATE TABLE IF NOT EXISTS `membre` (
   UNIQUE KEY `UNIQ_F6B4FB2992FC23A8` (`username_canonical`),
   UNIQUE KEY `UNIQ_F6B4FB29A0D96FBF` (`email_canonical`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
---
--- Contenu de la table `membre`
---
-
--- INSERT INTO `membre` (`id`, `username`, `username_canonical`, `email`, `email_canonical`, `enabled`, `salt`, `password`, `idGenre`, `idInstrument`, `last_login`, `locked`, `expired`, `expires_at`, `confirmation_token`, `password_requested_at`, `roles`, `credentials_expired`, `credentials_expire_at`) VALUES
--- (1, 'test', 'test', 'test@test.fr', 'test@test.fr', 1, 'rxytnq7xuvk8gc4kc808sw0oo0c4k0o', 'IDsIjmWdL2Dk4QdmIjH5+ZNXNSBWW+EInANFQTk2Z4/HtDCllZh0q7ubvkMcSXfnLk7HInUbCVJv79poGJcG2Q==', NULL, NULL, '2014-12-08 02:09:48', 0, 0, NULL, NULL, NULL, 'a:0:{}', 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -215,6 +175,43 @@ INSERT INTO `instrument` (`id`, `nom`) VALUES
 (3, 'Batterie'),
 (4, 'Basse'),
 (5, 'Synthétiseur');
+
+--
+-- Contenu de la table `genre`
+--
+
+INSERT INTO `genre` (`id`, `nom`) VALUES
+(1, 'Rock'),
+(2, 'Metal'),
+(3, 'Reggae'),
+(4, 'Jazz'),
+(5, 'Funk'),
+(6, 'Blues'),
+(7, 'Classique'),
+(8, 'Variete Française'),
+(9, 'Electro'),
+(10, 'Rap'),
+(11, 'R''n''B'),
+(12, 'Soul'),
+(13, 'Disco'),
+(14, 'Pop'),
+(15, 'Country'),
+(16, 'Pop Rock'),
+(17, 'Ska'),
+(18, 'Experimentale');
+
+--
+-- Contenu de la table `artiste`
+--
+
+INSERT INTO `artiste`(`id`, `nom`, `nbTablature`) VALUES 
+(1, 'Chinese Man', 3),
+(2, 'Metallica', 2),
+(3, 'Rammstein', 2),
+(4, 'Parov Stelar', 2),
+(5, 'Die Antwoord', 2),
+(6, 'Shaka Ponk', 1),
+(7, 'Beyoncé', 2);
 
 --
 -- Contenu de la table `membre`
