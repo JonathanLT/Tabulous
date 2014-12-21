@@ -1,0 +1,61 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Tablature list</h1>
+
+    <table class="records_list">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nommusique</th>
+                <th>Album</th>
+                <th>Accordage</th>
+                <th>Date</th>
+                <th>Derniereconsultation</th>
+                <th>Moyenne</th>
+                <th>Format</th>
+                <th>Niveau</th>
+                <th>Adressefichier</th>
+                <th>Cumulnote</th>
+                <th>Nbnote</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('tablature_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td>{{ entity.nommusique }}</td>
+                <td>{{ entity.album }}</td>
+                <td>{{ entity.accordage }}</td>
+                <td>{% if entity.date %}{{ entity.date|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if entity.derniereconsultation %}{{ entity.derniereconsultation|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ entity.moyenne }}</td>
+                <td>{{ entity.format }}</td>
+                <td>{{ entity.niveau }}</td>
+                <td>{{ entity.adressefichier }}</td>
+                <td>{{ entity.cumulnote }}</td>
+                <td>{{ entity.nbnote }}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('tablature_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('tablature_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <ul>
+        <li>
+            <a href="{{ path('tablature_new') }}">
+                Create a new entry
+            </a>
+        </li>
+    </ul>
+    {% endblock %}

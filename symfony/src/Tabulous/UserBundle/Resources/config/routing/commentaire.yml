@@ -1,0 +1,30 @@
+commentaire:
+    path:     /
+    defaults: { _controller: "UserBundle:Commentaire:index" }
+
+commentaire_show:
+    path:     /{id}/show
+    defaults: { _controller: "UserBundle:Commentaire:show" }
+
+commentaire_new:
+    path:     /new
+    defaults: { _controller: "UserBundle:Commentaire:new" }
+
+commentaire_create:
+    path:     /create
+    defaults: { _controller: "UserBundle:Commentaire:create" }
+    requirements: { _method: post }
+
+commentaire_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "UserBundle:Commentaire:edit" }
+
+commentaire_update:
+    path:     /{id}/update
+    defaults: { _controller: "UserBundle:Commentaire:update" }
+    requirements: { _method: post|put }
+
+commentaire_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "UserBundle:Commentaire:delete" }
+    requirements: { _method: post|delete }

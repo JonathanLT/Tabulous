@@ -1,0 +1,72 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Tablature</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Nommusique</th>
+                <td>{{ entity.nommusique }}</td>
+            </tr>
+            <tr>
+                <th>Album</th>
+                <td>{{ entity.album }}</td>
+            </tr>
+            <tr>
+                <th>Accordage</th>
+                <td>{{ entity.accordage }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{{ entity.date|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Derniereconsultation</th>
+                <td>{{ entity.derniereconsultation|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Moyenne</th>
+                <td>{{ entity.moyenne }}</td>
+            </tr>
+            <tr>
+                <th>Format</th>
+                <td>{{ entity.format }}</td>
+            </tr>
+            <tr>
+                <th>Niveau</th>
+                <td>{{ entity.niveau }}</td>
+            </tr>
+            <tr>
+                <th>Adressefichier</th>
+                <td>{{ entity.adressefichier }}</td>
+            </tr>
+            <tr>
+                <th>Cumulnote</th>
+                <td>{{ entity.cumulnote }}</td>
+            </tr>
+            <tr>
+                <th>Nbnote</th>
+                <td>{{ entity.nbnote }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('tablature') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('tablature_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}
