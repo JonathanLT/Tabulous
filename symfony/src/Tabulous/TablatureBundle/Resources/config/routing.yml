@@ -1,3 +1,7 @@
+tablature_tablature:
+    resource: "@TablatureBundle/Resources/config/routing/tablature.yml"
+    prefix:   /tablature
+
 tablature_liste:
     path:      /tablatures
     defaults: { _controller: TablatureBundle:Tablature:liste }
