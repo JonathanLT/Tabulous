@@ -225,7 +225,7 @@ class TablatureController extends Controller
         ;
     }
 	
-	public function listeAction()
+	public function listetAction()
 	{
 		$listTablature = $this->getDoctrine()->getRepository('TablatureBundle:Tablature')->FindAll();
 
@@ -234,6 +234,16 @@ class TablatureController extends Controller
 		));
 
 	}
+
+        public function listeaAction()
+    {
+        $listArtiste = $this->getDoctrine()->getRepository('TablatureBundle:Artiste')->FindAll();
+
+        return $this->render('TablatureBundle::artistes.html.twig', array(
+            'listArtiste' => $listArtiste
+        ));
+
+    }
 
 	protected function getUploadDir()
 	{

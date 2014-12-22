@@ -32,7 +32,7 @@
       <ul>
       <li><a class="btn btn-primary btn-lg" href="{{ path('site_home') }}">Home »</a></li>
       <li> <a class="btn btn-primary btn-lg" href="{{ path('tablature_liste') }}">Tablatures »</a></li>
-      <li><a class="btn btn-primary btn-lg" href="">Artistes »</a></li>   
+      <li><a class="btn btn-primary btn-lg" href="{{ path('artiste_liste') }}">Artistes »</a></li>   
       <li><a class="btn btn-primary btn-lg" href="{{ path('user_register') }}">Register »</a></li> 
       <li>
           {{ render(controller("SiteBundle:Site:form")) }}

@@ -4,7 +4,7 @@ tablature_tablature:
 
 tablature_liste:
     path:      /tablatures
-    defaults: { _controller: TablatureBundle:Tablature:liste }
+    defaults: { _controller: TablatureBundle:Tablature:listet }
 
 tablature_view:
     path:      /tablatures/{id}
@@ -17,3 +17,7 @@ artiste_view:
     defaults: { _controller: TablatureBundle:Tablature:artisteView }
     requirements:
         id: \d+
+
+artiste_liste:
+    path: /artistes
+    defaults: { _controller: TablatureBundle:Tablature:listea }

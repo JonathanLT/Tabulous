@@ -1,0 +1,34 @@
+
+{% extends "SiteBundle::layout.html.twig" %}
+
+{% block title %}
+  Recherche tablature - {{ parent() }}
+{% endblock %}
+
+{% block tabulous_body %}
+
+  <table id="tablature"  cellspacing="4" cellpadding="6"  border="4" class="tab_table">
+          <caption><h1>Tablatures</h1></caption>
+            <thead> 
+               <tr>
+             <th>Nom</th>
+             <th>Number of tablatures</th>
+            </tr>
+           </thead>
+          <tbody>
+    {% for artiste in listArtiste %}
+       
+
+        <tr align="center">
+            <td><a href=""> {{ artiste.nom }} </a></td>
+            <td><a href=""> {{ artiste.nbTablature }} </a></td>
+
+          </tr>
+       
+    {% else %}
+      <p>Pas (encore !) de tablatures</p>
+    {% endfor %}
+    </tbody></table>
+  
+
+{% endblock %}
