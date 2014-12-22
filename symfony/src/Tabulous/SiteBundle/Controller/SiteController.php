@@ -50,4 +50,44 @@ $query3 = $em->createQuery(
                                       'listTablature3' => $listTablature3));
         }
 
+public function FormAction()
+  {
+ return $this->render('SiteBundle:Site:search.html.twig');
+  }
+
+public function researchAction(Request $request)
+	{
+		 if ($request->getMethod() == 'POST') {
+        $keyword = $request->request->get('keyword');
+        
+		$search_exploded = explode (" ", $keyword);
+
+ 		$x = 0;
+ 		$construct = "";
+
+		foreach($search_exploded as $search_each)
+		{
+			$x++;
+			if($x==1)
+			$construct .= "t.nommusique LIKE '%$search_each%' OR a.nom LIKE '%$search_each%'";
+			else
+			$construct .="OR t.nommusique LIKE '%$search_each%' OR a.nom LIKE '%$search_each%'"; 
+		}
+ 
+ 		$em = $this->getDoctrine()->getManager(); 
+
+
+        $query4 = $em->createQuery(
+                  'SELECT t FROM TablatureBundle:Tablature t JOIN t.idartiste a  WHERE '.$construct.''
+          );
+
+         $listTablature = $query4->getResult();
+             return $this->render('TablatureBundle::tablatures.html.twig', array(
+			'listTablature' => $listTablature
+			));
+    	}
+	}
+
 }
+
+

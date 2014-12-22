@@ -6,3 +6,6 @@ site_home:
     requirements:
         page: \d*
 
+research:
+    path:      /research
+    defaults:  { _controller: SiteBundle:Site:research }

@@ -35,10 +35,7 @@
       <li><a class="btn btn-primary btn-lg" href="">Artistes »</a></li>   
       <li><a class="btn btn-primary btn-lg" href="{{ path('user_register') }}">Register »</a></li> 
       <li>
-          <form id="templatemo_login" method="get" action="#">
-                <input class="inputfield" name="keyword" type="text" id="keyword"/>
-                <input class="button" type="submit" name="Search" value="Search" />
-            </form>
+          {{ render(controller("SiteBundle:Site:form")) }}
          </li>   
         </ul>  
     </div>
